@@ -1,3 +1,5 @@
+package view;
+
 
 public class BuilderFrame extends javax.swing.JFrame {
 
