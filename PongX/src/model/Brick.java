@@ -9,6 +9,6 @@ package model;
  *
  * @author cagrikaymak
  */
-public class GameManager {
+public class Brick {
     
 }
