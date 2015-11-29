@@ -1,0 +1,35 @@
+.playLearn
+ {
+-fx-background-color: 
+        linear-gradient(#ffd65b, #e68400),
+        linear-gradient(#b80000, #b22222),
+        
+	linear-gradient(#6c6a8a 0%, #6a6a6b 20%, #ff0534 80%, #262626 100%),
+        linear-gradient(from 108.0% 0.0% to 13.0% 00.0%, rgba(31.0,31.0,31.0,31.9), rgba(155.0,225.0,255.0,0.0));
+        
+    -fx-background-radius: 32.0;
+    -fx-background-insets: 0.0,0.0,5.0,0.0,5.0;
+    -fx-text-fill: #fafee5;
+    -fx-font-weight: bold;
+    -fx-font-size: 64.0px;
+    -fx-padding: 10.0 22.0 10.0 22.0;
+}
+
+
+.gameKinds
+{
+    -fx-background-color: 
+        linear-gradient(#ffd65b, #e68400),
+        linear-gradient(#b80000, #b22222),
+        
+	linear-gradient(#6c6a8a 0%, #6a6a6b 20%, #ff0534 80%, #262626 100%),
+        linear-gradient(from 108.0% 0.0% to 13.0% 00.0%, rgba(31.0,31.0,31.0,31.9), rgba(155.0,225.0,255.0,0.0));
+        
+    -fx-background-radius: 32.0;
+    -fx-background-insets: 0.0,0.0,5.0,0.0,5.0;
+    -fx-text-fill: #fafee5;
+    -fx-font-weight: bold;
+    -fx-font-size: 40.0px;
+    -fx-padding: 10.0 22.0 10.0 22.0;
+}
+
