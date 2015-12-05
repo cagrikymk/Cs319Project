@@ -31,7 +31,7 @@ public class ScreenManager {
 		});
 
 		entranceView.getOptionsButton().setOnAction(e -> {
-
+                        
 		});
 	}
 
