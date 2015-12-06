@@ -28,7 +28,7 @@ public class CreditsView extends Pane {
  
     private Button backButton;
     
-    private Label groupMembersLabel;          
+    private Label groupMembersLabel, optionsHeaderTitle;          
 
     
     private double width, height;
@@ -38,6 +38,11 @@ public class CreditsView extends Pane {
         
         width = 1366;
         height = 768;
+        
+        optionsHeaderTitle = new Label("Credits");
+        optionsHeaderTitle.getStyleClass().add("paneHeaderLabel");
+        optionsHeaderTitle.setLayoutY(height/20);
+        optionsHeaderTitle.setLayoutX(width/5);
 
         
          backButton = new Button("Back");
@@ -58,7 +63,7 @@ public class CreditsView extends Pane {
                  width, height, true, true), BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
         
         
-        getChildren().addAll(backButton, groupMembersLabel);
+        getChildren().addAll(optionsHeaderTitle, backButton, groupMembersLabel);
     }
 
     public Button getBackButton() {

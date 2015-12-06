@@ -56,6 +56,61 @@
     -fx-text-fill: white;
     -fx-font-size: 40px;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-} 
+}
 
+.font {
+    -fx-font: bold italic 20pt "Arial";
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+}
+
+.buttonBlue {
+-fx-font-size: 13.0px;
+-fx-base: #00a7d4;
+-fx-background: #e5f3f6;
+-fx-focus-color: #0093FF;
+-fx-control-inner-background: #FFFFFF;
+-fx-text-base-color: #FFFFFF;
+-fx-background-color:#00a7d4;
+-fx-inner-border: linear-gradient(to bottom, derive(-fx-color,73.6%) 0%, derive(-fx-color,29.200000000000003%) 100%);
+-fx-body-color: linear-gradient( to bottom, derive(-fx-color, 34.0%) 0%, derive(-fx-color, -18.0%) 100%);
+-fx-background-insets: 0px;
+-fx-background-radius: 0px;
+-fx-padding: 0.166667em 0.833333em 0.25em 0.833333em; /* 2 10 3 10 */
+-fx-text-fill: -fx-text-base-color;
+-fx-font: bold italic 15pt "Arial";
+-fx-alignment: CENTER;
+-fx-content-display: LEFT;
+}
+
+.buttonBlue:focused {
+-fx-color:#00a7d4;
+-fx-background-color:#ED9C28, #00a7d4;
+-fx-background-insets: -1.4, 0, 1, 2;
+-fx-background-radius: 0;
+}
+
+.buttonBlue:hover {
+-fx-focus-color: #FF0000;
+-fx-background-color: #ED9C28, #0187ab;
+}
+
+.vBoxOptions {
+    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+    -fx-border-color: activeborder;
+     -fx-background-color: 
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768);
+    -fx-spacing: 10;
+    -fx-padding: 10;
+}
+
+.paneHeaderLabel {
+    -fx-font: bold italic 40pt "Arial";
+    -fx-text-fill: oldlace;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);
+    
+}
 
