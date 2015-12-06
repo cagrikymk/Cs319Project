@@ -37,43 +37,43 @@ public class MainMenu extends Pane {
 
     public MainMenu() {
         
-        width = 1024;
-        height = 660;
+        width = 1366;
+        height = 768;
 
         singleplayerButton = new Button("Singleplayer");
         singleplayerButton.getStyleClass().add("menuButton");
         singleplayerButton.setMinSize(200, 50);
-        singleplayerButton.setLayoutX(height/2 + 200/2);
-        singleplayerButton.setLayoutY(width/5 + 10);
+        singleplayerButton.setLayoutX(width/2 - 200/2);
+        singleplayerButton.setLayoutY(height/3 + 10);
 
         multiplayerButton = new Button("Multiplayer");
         multiplayerButton.getStyleClass().add("menuButton");
         multiplayerButton.setMinSize(200, 50);
-        multiplayerButton.setLayoutX(height/2 + 200/2);
-        multiplayerButton.setLayoutY(width/5 + 85);
+        multiplayerButton.setLayoutX(width/2 - 200/2);
+        multiplayerButton.setLayoutY(height/3 + 85);
 
         optionsButton = new Button("Options");
         optionsButton.getStyleClass().add("menuButton");
         optionsButton.setMinSize(200, 50);
-        optionsButton.setLayoutX(height/2 + 200/2);
-        optionsButton.setLayoutY(width/5 + 160);
+        optionsButton.setLayoutX(width/2 - 200/2);
+        optionsButton.setLayoutY(height/3 + 160);
         
         creditsButton = new Button("Credits");
         creditsButton.getStyleClass().add("menuButton");
          creditsButton.setMinSize(200, 50);
-        creditsButton.setLayoutX(height/2 + 200/2);
-        creditsButton.setLayoutY(width/5 + 235);
+        creditsButton.setLayoutX(width/2 - 200/2);
+        creditsButton.setLayoutY(height/3 + 235);
         
          exitButton = new Button("Exit");
         exitButton.getStyleClass().add("menuButton");
          exitButton.setMinSize(200, 50);
-        exitButton.setLayoutX(height/2 + 200/2);
-        exitButton.setLayoutY(width/5 + 310);
+        exitButton.setLayoutX(width/2 - 200/2);
+        exitButton.setLayoutY(height/3 + 310);
         
        
 
          this.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream("/bg.png"), 
-                 width, width, true, true), BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+                 width, height, true, true), BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
         
         
         getChildren().addAll( singleplayerButton, multiplayerButton, optionsButton, creditsButton, exitButton);
