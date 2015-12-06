@@ -3,11 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/PongX-fx/src/view/ScreenManager.java</file>
-            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/PongX-fx/src/view/PlayGameMenuView.java</file>
-            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/PongX-fx/src/mainPackage/main.css</file>
-            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/PongX-fx/src/mainPackage/MainClass.java</file>
-            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/PongX-fx/src/view/MainMenu.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/mainPackage/MainClass.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/model/Power.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/controller/GameFieldManager.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/view/PlayGameMenuView.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/controller/InputManager.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/controller/SoundManager.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/view/MainMenu.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/model/RegularBrick.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/controller/GameController.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/controller/PlayGameMenuController.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/model/Brick.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/mainPackage/main.css</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/controller/GameManager.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/model/Stick.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/controller/AIManager.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/view/ScreenManager.java</file>
+            <file>file:/C:/Users/cagrikaymak/Documents/NetBeansProjects/Cs319Project/PongX-fx/src/model/GameObject.java</file>
         </group>
     </open-files>
 </project-private>

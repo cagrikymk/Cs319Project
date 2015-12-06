@@ -1,6 +1,7 @@
 package mainPackage;
 
-import view.ScreenManager;
+import controller.MainMenuController;
+import controller.ScreenManager;
 import view.MainMenu;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -9,11 +10,15 @@ import javafx.stage.Stage;
 
 public class MainClass extends Application {
 
-	private  MainMenu entranceView;
-	private  ScreenManager entranceController;
+	private  MainMenu mainMenu;
+	private  MainMenuController mainMenuController;
 
 	private static Stage primaryStage;
 	private static Scene scene;
+        private static Parent prevParent , curParent;
+        
+                
+        
 	
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -23,15 +28,18 @@ public class MainClass extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
 		
-		entranceView = new MainMenu();
-		entranceController = new ScreenManager(entranceView);
+		mainMenu = new MainMenu();
+		mainMenuController = new MainMenuController(mainMenu);
 
-		scene = new Scene(entranceView, 1024, 660);
+		scene = new Scene(mainMenu, 1366, 768);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("PongX");
 		primaryStage.setResizable(false);
 		primaryStage.centerOnScreen();
 		primaryStage.show();
+                
+                ScreenManager.setScene(scene);
+                ScreenManager.setPrimaryStage(primaryStage);
 
 		
 		
@@ -39,9 +47,5 @@ public class MainClass extends Application {
 		scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
 	}
 	
-	public static void changeSceneRoot(Parent parent){
-		scene.setRoot(parent);
-		primaryStage.setScene(scene);
-	}
 
 }
