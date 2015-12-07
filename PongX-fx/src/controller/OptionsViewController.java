@@ -5,6 +5,8 @@
  */
 package controller;
 
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import view.CreditsView;
 import view.OptionsView;
 

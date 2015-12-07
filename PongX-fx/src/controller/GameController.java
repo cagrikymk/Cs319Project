@@ -5,10 +5,19 @@
  */
 package controller;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
+
 /**
  *
  * @author user
  */
-public class GameController {
+public class GameController implements EventHandler<ActionEvent> {
+
+    @Override
+    public void handle(KeyEvent event) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

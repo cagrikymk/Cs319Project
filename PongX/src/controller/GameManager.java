@@ -10,5 +10,5 @@ package controller;
  * @author cagrikaymak
  */
 public class GameManager {
-    
+  
 }
