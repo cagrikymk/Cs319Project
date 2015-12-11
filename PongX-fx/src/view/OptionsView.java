@@ -5,6 +5,7 @@
  */
 package view;
 
+import view.extraComponents.ToggleSwitch;
 import java.io.File;
 
 import javafx.animation.Timeline;

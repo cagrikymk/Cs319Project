@@ -1,6 +1,6 @@
 package mainPackage;
 
-import controller.MainMenuController;
+import controller.viewController.MainMenuController;
 import controller.ScreenManager;
 import view.MainMenu;
 import javafx.application.Application;

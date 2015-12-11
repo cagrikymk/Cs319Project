@@ -13,11 +13,8 @@ import javafx.scene.input.KeyEvent;
  *
  * @author user
  */
-public class GameController implements EventHandler<ActionEvent> {
+public class GameController {
 
-    @Override
-    public void handle(KeyEvent event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
 }
