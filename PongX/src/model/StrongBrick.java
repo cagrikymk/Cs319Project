@@ -5,10 +5,25 @@
  */
 package model;
 
+import javafx.scene.shape.Shape;
+
 /**
  *
  * @author cagrikaymak
  */
-public class StrongBrick {
+public class StrongBrick extends Brick {
+    private int extraLife;
+
+    public StrongBrick(double axisX, double axisY, Shape shape) {
+        super(axisX, axisY, shape);
+    }
+
+    public int getExtraLife() {
+        return extraLife;
+    }
+
+    public void setExtraLife(int extraLife) {
+        this.extraLife = extraLife;
+    }
     
 }
