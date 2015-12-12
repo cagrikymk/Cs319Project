@@ -13,8 +13,6 @@ import view.CreditsView;
 import view.MainMenu;
 import view.MultiplayerPane;
 import view.OptionsView;
-import view.PlayGameMenuView;
-import view.PlayGameMenuView;
 import view.SingleplayerPane;
 
 /**

@@ -6,15 +6,10 @@
 package view;
 
 import view.extraComponents.ToggleSwitch;
-import java.io.File;
-
-import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -23,6 +18,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import model.Options;
 
 /**
  *
@@ -44,8 +40,11 @@ public class OptionsView extends Pane {
     
     private double width, height;
    
-
+    private Options options;
+    
     public OptionsView() {
+        
+        options = new Options();
         
         width = 1366;
         height = 768;
@@ -70,8 +69,10 @@ public class OptionsView extends Pane {
         changeBackgroundButton = new Button("Change Game Background");
          changeBackgroundButton.getStyleClass().add("buttonBlue");
         enableSoundLabel = new Label("Enable Sounds");
-        enableSoundLabel.getStyleClass().add("font");
+        enableSoundLabel.getStyleClass().add("font");  
         soundSwitch = new ToggleSwitch();
+        soundSwitch.setSelection(options.isIsSoundEnabled());
+        
         
         
         soundSwitch.setLayoutX(100);
@@ -89,13 +90,14 @@ public class OptionsView extends Pane {
         moveDown1Label = new Label("MOVE DOWN ");
          moveDown1Label.getStyleClass().add("font");
          
-         changeMoveUp1Button = new Button("W");
-         changeMoveDown1Button = new Button("S");
+         changeMoveUp1Button = new Button(options.getP1Keys()[0].toUpperCase());
+         
+         changeMoveDown1Button = new Button(options.getP1Keys()[1].toUpperCase());
          changeMoveUp1Button.getStyleClass().add("buttonBlue");
          changeMoveDown1Button.getStyleClass().add("buttonBlue");
          
-         changeMoveUp2Button = new Button("O");
-         changeMoveDown2Button = new Button("L");
+         changeMoveUp2Button = new Button(options.getP2Keys()[0].toUpperCase());
+         changeMoveDown2Button = new Button(options.getP2Keys()[1].toUpperCase());
          changeMoveUp2Button.getStyleClass().add("buttonBlue");
          changeMoveDown2Button.getStyleClass().add("buttonBlue");
          
@@ -167,6 +169,18 @@ public class OptionsView extends Pane {
     public void setSoundSwitch(ToggleSwitch soundSwitch) {
         this.soundSwitch = soundSwitch;
     }
+
+    public Options getOptions() {
+        return options;
+    }
+
+    public void setOptions(Options options) {
+        this.options = options;
+    }
+    
+    
+    
+    
     
     
 

@@ -65,4 +65,8 @@ public class ToggleSwitch extends HBox {
             		}
 		});
 	}
+        
+        public void setSelection(boolean selection) {
+            switchedOn.set(selection);              
+        }
 }

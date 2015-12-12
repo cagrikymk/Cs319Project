@@ -1,0 +1,3 @@
+sound = true
+p1keys = W,S
+p2keys = O,L
