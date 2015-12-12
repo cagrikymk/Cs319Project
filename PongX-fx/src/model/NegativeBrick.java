@@ -5,10 +5,28 @@
  */
 package model;
 
+import javafx.scene.shape.Shape;
+
 /**
  *
  * @author cagrikaymak
  */
-public class NegativeBrick {
+public class NegativeBrick extends Brick{
+    int speedDown;
+
+    public NegativeBrick(double axisX, double axisY, Shape shape) {
+        super(axisX, axisY, shape);
+    }
+
+    public int getSpeedDown() {
+        return speedDown;
+    }
+
+    public void setSpeedDown(int speedDown) {
+        this.speedDown = speedDown;
+    }
     
+    public void speedDownBall(Ball b){
+        b.changeSpeed(speedDown);
+    }
 }

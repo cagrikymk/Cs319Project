@@ -5,52 +5,50 @@
  */
 package model;
 
+import javafx.scene.shape.Shape;
+
 /**
  *
- * @author fcagil
+ * @author cagrikaymak
  */
-public class Ball {
+public class Ball extends GameObject{
     
-    private int x = WIDTH / 2; //WIDTH = oyun paneli genisligi
-    private int y = HEIGHT / 2;//HEIGHT = oyun paneli yuksekligi
-    private int xVelocity = -4;
-    private int yVelocity = 4;
-    private int size = 5;
+    private double size;
+    private double speed;
+
+    public Ball(double axisX, double axisY, Shape shape) {
+        super(axisX, axisY, shape);
+    }
+
+    public double getSize() {
+        return size;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSize(double size) {
+        this.size = size;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
     
-
-    public void update() {
-        x = x + xVelocity;
-        y = y + yVelocity;
-
-        if (x < 0) {
-            xVelocity = 4;
-            //RIGHT PLAYER GOAL
-        } else if (x + size > WIDTH - 6) {
-            xVelocity = -4;
-            //LEFT PLAYER GOAL
-        }
-
-        if (y < 0) {
-            yVelocity = 4;
-        } else if (y + size > HEIGHT - 28) {
-            yVelocity = -4;
-        }
+    public void changeSpeed (double s) {
+        setSpeed(s);
     }
-
-    private void reverseDirectionX() {
-        xVelocity = -xVelocity;
+    
+    public void changeSize (double r) {
+        setSize(r);
     }
-
-    private void reverseDirectionY() {
-        yVelocity = -yVelocity;
+    
+    public void intialThrowBall(){
+        
     }
-
-    public int getX() {
-        return x;
+    
+    public void reflectBall(){
+        
     }
-
-    public int getY() {
-        return y;
-    }
-
 }

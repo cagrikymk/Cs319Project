@@ -5,10 +5,16 @@
  */
 package model;
 
+import javafx.scene.shape.Shape;
+
 /**
  *
  * @author cagrikaymak
  */
-public class RegularBrick {
+public class RegularBrick extends Brick {
+
+    public RegularBrick(double axisX, double axisY, Shape shape) {
+        super(axisX, axisY, shape);
+    }
     
 }

@@ -5,10 +5,34 @@
  */
 package model;
 
+
+
 /**
  *
  * @author cagrikaymak
  */
+import javafx.scene.shape.Shape;
+import javafx.geometry.Point2D;
+
 public class GameObject {
     
+    private double axisX;
+    private double axisY;
+    private Shape shape;
+    private Point2D point = new Point2D (axisX, axisY);
+
+    public GameObject(double axisX, double axisY, Shape shape) {
+        this.axisX = axisX;
+        this.axisY = axisY;
+        this.shape = shape;
+    }
+    
+    
+    public Point2D getLocation(){
+        return this.point;
+    }
+    public void uptade (double x, double y){
+        axisX = x;
+        axisY = y;
+    }
 }
