@@ -11,17 +11,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import view.CreditsView;
-import view.OptionsView;
+import view.CreditsPane;
+import view.OptionsPane;
 
 /**
  *
  * @author cagrikaymak
  */
 public class OptionsPaneController {
-     private OptionsView optionsView;
+     private OptionsPane optionsView;
 
-    public OptionsPaneController(OptionsView optionsView) {
+    public OptionsPaneController(OptionsPane optionsView) {
         this.optionsView = optionsView;
         
         optionsView.getBackButton().setOnAction(e -> {

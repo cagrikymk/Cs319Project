@@ -1,12 +1,12 @@
 package controller;
 
-import view.PlayGameMenuView;
+import view.PlayGameMenuPane;
 
 public class PlayGameMenuController {
 
-	private PlayGameMenuView playGameMenuView;
+	private PlayGameMenuPane playGameMenuView;
 	
-	public PlayGameMenuController(PlayGameMenuView playGameMenuView) {
+	public PlayGameMenuController(PlayGameMenuPane playGameMenuView) {
 		this.playGameMenuView = playGameMenuView;
 		
 		playGameMenuView.getStartGameButton().setOnAction(e -> {

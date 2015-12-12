@@ -7,8 +7,8 @@ package controller.viewController;
 
 import controller.ScreenManager;
 import javafx.scene.layout.Pane;
-import view.CreditsView;
-import view.OptionsView;
+import view.CreditsPane;
+import view.OptionsPane;
 import view.SingleplayerPane;
 
 /**

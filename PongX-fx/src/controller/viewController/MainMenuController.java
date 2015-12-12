@@ -9,10 +9,10 @@ import controller.PlayGameMenuController;
 import controller.ScreenManager;
 import javafx.scene.layout.Pane;
 import mainPackage.MainClass;
-import view.CreditsView;
+import view.CreditsPane;
 import view.MainMenu;
 import view.MultiplayerPane;
-import view.OptionsView;
+import view.OptionsPane;
 import view.SingleplayerPane;
 
 /**
@@ -39,13 +39,13 @@ public class MainMenuController {
 		});
 
 		mainMenu.getCreditsButton().setOnAction(e -> {
-                        CreditsView creditsView = new CreditsView();
+                        CreditsPane creditsView = new CreditsPane();
 			CreditsPaneController creditsViewController = new CreditsPaneController(creditsView);
 			ScreenManager.changeSceneRoot(mainMenu, creditsView);
 		});
 
 		mainMenu.getOptionsButton().setOnAction(e -> {
-                        OptionsView optionsView = new OptionsView();
+                        OptionsPane optionsView = new OptionsPane();
 			OptionsPaneController optionsViewController = new OptionsPaneController(optionsView);
 			ScreenManager.changeSceneRoot(mainMenu, optionsView);
 		});

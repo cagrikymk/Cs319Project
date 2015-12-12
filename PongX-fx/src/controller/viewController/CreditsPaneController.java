@@ -6,16 +6,16 @@
 package controller.viewController;
 
 import controller.ScreenManager;
-import view.CreditsView;
+import view.CreditsPane;
 
 /**
  *
  * @author cagrikaymak
  */
 public class CreditsPaneController {
-    private CreditsView creditsView;
+    private CreditsPane creditsView;
 
-    public CreditsPaneController(CreditsView credits) {
+    public CreditsPaneController(CreditsPane credits) {
         creditsView = credits;
         
         creditsView.getBackButton().setOnAction(e -> {
