@@ -26,6 +26,6 @@ public class FastBrick extends Brick {
         this.speedUP = speedUP;
     }
     public void speedUpBall(Ball b){
-        b.changeSpeed(speedUP);
+        
     }
 }

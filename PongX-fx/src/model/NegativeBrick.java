@@ -26,7 +26,5 @@ public class NegativeBrick extends Brick{
         this.speedDown = speedDown;
     }
     
-    public void speedDownBall(Ball b){
-        b.changeSpeed(speedDown);
-    }
+    
 }

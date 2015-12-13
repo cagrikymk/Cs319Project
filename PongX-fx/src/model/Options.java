@@ -27,15 +27,24 @@ public class Options {
     private String p2Keys[];
     
     private final String filePath = "options/options.txt";
+    
+    private static Options optionsInstance;
 
-   public Options(){
+   private Options(){
        // creation options from txt
         try {
             readOptionsFromFile();
         } catch (IOException ex) {
             Logger.getLogger(Options.class.getName()).log(Level.SEVERE, null, ex);
         }      
-    } 
+    }
+   
+   public static Options getInstance() {
+       if(optionsInstance == null)
+           optionsInstance = new Options();
+       return optionsInstance;
+   }
+   
    
    public void applyOptions() {
         try {

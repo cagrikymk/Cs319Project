@@ -5,7 +5,10 @@
  */
 package controller.viewController;
 
+import controller.GameManager;
 import controller.ScreenManager;
+import model.Options;
+import view.GameRendererPane;
 import view.MultiplayerPane;
 /**
  *
@@ -31,7 +34,12 @@ public class MultiplayerPaneController {
                         multiplayerPane.getFieldImagePane().getChildren().clear();
                         multiplayerPane.nextFieldImage();                  		
 		});
-                
+                 
+                 multiplayerPane.getPlayButton().setOnAction(e -> {
+                       GameManager.getInstance().init(Options.getInstance(), multiplayerPane.getFriction(), null, false, multiplayerPane.getSelectedImageURL());
+                       ScreenManager.changeSceneRoot(multiplayerPane, new GameRendererPane());
+		});
+              
                 
 	}
 }

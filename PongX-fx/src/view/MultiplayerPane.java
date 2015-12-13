@@ -228,7 +228,14 @@ public class MultiplayerPane extends Pane {
         this.imageURL = imageURL;
     }
     
+    public double getFriction() {
+        System.out.println("GET FRICTION FROM MULTIPLAYERPANE " + frictionSpinner.getNumber().doubleValue());
+        return frictionSpinner.getNumber().doubleValue();
+    }
     
+    public String getSelectedImageURL() {
+        return imageURL[imageIndex];
+    }
 
 
     public Pane getFieldImagePane() {

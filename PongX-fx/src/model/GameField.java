@@ -13,23 +13,24 @@ import java.util.ArrayList;
  * @author cagrikaymak
  */
 public class GameField {
-    ArrayList<Ball> Balls;
-    ArrayList<Power> Powers;
-    ArrayList<Brick> bricks;
-    double friction;
-    Image texture;
+    private Ball ball;
+    private ArrayList<Power> Powers;
+    private ArrayList<Brick> bricks;
+    private double friction;
+    private String imageURL;
+    
+    private Stick players[];
 
-    public GameField(ArrayList<Ball> Balls, ArrayList<Power> Powers, ArrayList<Brick> bricks, double friction, Image texture) {
-        this.Balls = Balls;
+    public GameField( Ball ball, ArrayList<Power> Powers, ArrayList<Brick> bricks, double friction, String imageURL) {
+        this.ball = ball;
         this.Powers = Powers;
         this.bricks = bricks;
         this.friction = friction;
-        this.texture = texture;
+        this.imageURL = imageURL;
+        players = new Stick[2];
     }
 
-    public ArrayList<Ball> getBalls() {
-        return Balls;
-    }
+   
 
     public ArrayList<Power> getPowers() {
         return Powers;
@@ -43,13 +44,15 @@ public class GameField {
         return friction;
     }
 
-    public Image getTexture() {
-        return texture;
+    public Ball getBall() {
+        return ball;
     }
 
-    public void setBalls(ArrayList<Ball> Balls) {
-        this.Balls = Balls;
+    public void setBall(Ball ball) {
+        this.ball = ball;
     }
+
+    
 
     public void setPowers(ArrayList<Power> Powers) {
         this.Powers = Powers;
@@ -63,9 +66,25 @@ public class GameField {
         this.friction = friction;
     }
 
-    public void setTexture(Image texture) {
-        this.texture = texture;
+    public String getImageURL() {
+        return imageURL;
     }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public Stick[] getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(Stick[] players) {
+        this.players = players;
+    }
+    
+    
+
+   
     public void addObject(GameObject object){
         
     }
@@ -74,5 +93,9 @@ public class GameField {
     }
     public void loadBricks(ArrayList<Brick> Bricks){
         
+    }
+
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

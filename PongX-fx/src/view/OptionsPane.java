@@ -44,7 +44,7 @@ public class OptionsPane extends Pane {
     
     public OptionsPane() {
         
-        options = new Options();
+        options = Options.getInstance();
         
         width = 1366;
         height = 768;

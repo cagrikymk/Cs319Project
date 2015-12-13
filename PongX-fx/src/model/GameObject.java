@@ -13,23 +13,29 @@ package model;
  */
 import javafx.scene.shape.Shape;
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Rectangle;
 
 public class GameObject {
     
     private double axisX;
     private double axisY;
     private Shape shape;
-    private Point2D point = new Point2D (axisX, axisY);
-
+    private Point2D point;
+   
     public GameObject(double axisX, double axisY, Shape shape) {
         this.axisX = axisX;
         this.axisY = axisY;
         this.shape = shape;
+        point = new Point2D (axisX, axisY);
     }
     
     
     public Point2D getLocation(){
         return this.point;
+    }
+    
+    public Shape getShape() {
+        return shape;
     }
     public void uptade (double x, double y){
         axisX = x;

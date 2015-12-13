@@ -5,6 +5,8 @@
  */
 package model;
 
+import controller.GameFieldManager;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 
 /**
@@ -13,42 +15,52 @@ import javafx.scene.shape.Shape;
  */
 public class Ball extends GameObject{
     
-    private double size;
-    private double speed;
+    private double radius;
+    private double speedX;
+    private double speedY;
 
-    public Ball(double axisX, double axisY, Shape shape) {
-        super(axisX, axisY, shape);
-    }
-
-    public double getSize() {
-        return size;
-    }
-
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSize(double size) {
-        this.size = size;
-    }
-
-    public void setSpeed(double speed) {
-        this.speed = speed;
+    public Ball(double radius, double x, double y) {
+        super(x, y, new Circle(x, y, radius));
+        this.radius = radius;
+        speedX = speedY = 0; // initially zero
     }
     
-    public void changeSpeed (double s) {
-        setSpeed(s);
+
+    public double getRadius() {
+        return radius;
     }
+
+    public double getSpeedX() {
+        return speedX;
+    }
+
+    public void setRadius(double size) {
+        this.radius = size;
+    }
+
+    public void setSpeedX(double speed) {
+        this.speedX = speed;
+    }
+    
+    
     
     public void changeSize (double r) {
-        setSize(r);
+        setRadius(r);
     }
     
     public void intialThrowBall(){
-        
+        getShape().setLayoutX(GameFieldManager.MAP_WIDTH / 2);
+        getShape().setLayoutY(GameFieldManager.MAP_HEIGHT / 2);
+        speedX = (Math.random() * 10) + 3;
+        speedY = (Math.random() * 10) + 3;
     }
     
     public void reflectBall(){
         
     }
+    
+    public void update() {
+        
+    }
+    
 }
