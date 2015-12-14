@@ -6,6 +6,9 @@
 package controller;
 
 import java.util.ArrayList;
+import javafx.scene.shape.Shape;
+import model.Stick;
+import model.Power;
 import model.Ball;
 import model.Brick;
 import model.GameField;
@@ -41,23 +44,47 @@ public class GameFieldManager {
     }
     
     public void detectBrickBallCollision() {
-        
+        for ( Brick b1 : gameField.getBricks()){
+            Shape s1 = Shape.intersect(gameField.getBall().getShape(), b1.getShape());
+            if ( s1 != null){
+                gameField.getBall().reflectBall();
+                //b1.update()?
+            }
+        }
     } 
     
     public void detectStickBallCollision() {
-        
+        for ( Stick st1 : gameField.getPlayers()){
+            Shape s1 = Shape.intersect(gameField.getBall().getShape(), st1.getShape());
+            if ( s1 != null){
+                gameField.getBall().reflectBall();
+            }
+        }
     }
     
     public void detectPowerBallCollision() {
-        
+        for ( Power p1 : gameField.getPowers()){
+            Shape s1 = Shape.intersect(gameField.getBall().getShape(), p1.getShape());
+            if ( s1 != null){
+                //Use power on Ball or Stick
+                p1.setVisible(false);
+            }
+        }
     }
     
     public void detectBorderCollision() {
-        
+//        if ( gameField.getBall().getLocation().getY() <= GAMEFIELDUPBORDER)
+//              gameField.getBall().reflectBall();
+//        if ( gameField.getBall().getLocation().getY() >= GAMEFIELDDOWNBORDER)
+//              gameField.getBall().reflectBall();     
     }
     
     public void detectGoalAreaCollision() {
-        
+//        if ( gameField.getBall().getLocation().getX() <= GAMEFIELDLEFTBORDER)
+//                player2Score += 1;
+//        if ( gameField.getBall().getLocation().getX() >= GAMEFIELDRIGHTBORDER)
+//                player1Score += 1;
+//        
     }
 
     public GameField getGameField() {
@@ -82,8 +109,6 @@ public class GameFieldManager {
 
     public void setIsSingleplayer(boolean isSingleplayer) {
         this.isSingleplayer = isSingleplayer;
-    }
-    
-    
+    } 
     
 }

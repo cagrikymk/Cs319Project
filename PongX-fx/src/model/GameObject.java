@@ -13,7 +13,6 @@ package model;
  */
 import javafx.scene.shape.Shape;
 import javafx.geometry.Point2D;
-import javafx.scene.shape.Rectangle;
 
 public class GameObject {
     

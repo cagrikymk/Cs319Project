@@ -51,7 +51,7 @@ public class Brick extends GameObject {
 
     public void setWidth(double width) {
         this.width = width;
-    }
+    }  
     public boolean isAlive (){
         if (life == 0)
             return false;
