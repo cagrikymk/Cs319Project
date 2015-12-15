@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class GameField {
     private Ball ball;
-    private ArrayList<Power> Powers;
+    private ArrayList<Power> powers;
     private ArrayList<Brick> bricks;
     private double friction;
     private String imageURL;
@@ -23,17 +23,21 @@ public class GameField {
 
     public GameField( Ball ball, ArrayList<Power> Powers, ArrayList<Brick> bricks, double friction, String imageURL) {
         this.ball = ball;
-        this.Powers = Powers;
+        this.powers = Powers;
         this.bricks = bricks;
         this.friction = friction;
         this.imageURL = imageURL;
         players = new Stick[2];
     }
+    
+    public void initializeGameField() {
+        ball.intialThrowBall();
+    }
 
    
 
     public ArrayList<Power> getPowers() {
-        return Powers;
+        return powers;
     }
 
     public ArrayList<Brick> getBricks() {
@@ -55,7 +59,7 @@ public class GameField {
     
 
     public void setPowers(ArrayList<Power> Powers) {
-        this.Powers = Powers;
+        this.powers = Powers;
     }
 
     public void setBricks(ArrayList<Brick> bricks) {
@@ -96,6 +100,8 @@ public class GameField {
     }
 
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // update all game objects which are still alive
+        ball.uptade();
+        
     }
 }

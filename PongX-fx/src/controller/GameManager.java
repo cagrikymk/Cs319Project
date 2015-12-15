@@ -6,6 +6,7 @@
 package controller;
 
 import java.util.ArrayList;
+import javafx.animation.AnimationTimer;
 import model.Brick;
 import model.Options;
 
@@ -21,7 +22,10 @@ public class GameManager implements Runnable {
     
     private static GameManager gameManagerInstance; // SİNGLETON PATTERN
     
-
+    private AnimationTimer timer;
+    
+    int i = 0;
+            
     private GameManager() {
         
     }
@@ -48,24 +52,44 @@ public class GameManager implements Runnable {
         
     }
     
-    public void startGameLoop() { 
-        
-    }
-    
+    // prepare thread
     public void initializeGame() {
-        
+       gameFieldManager.initGameFieldManager();
+       
+            timer = new AnimationTimer() {
+
+             // this method will called 60 times per sec
+            @Override
+            public void handle(long now) {
+                getGameFieldManager().updateGameField();
+            }
+            
+        };
     }
     
     public void pauseGame() {
-        
+        if(gameState == GameState.RUNNING) {
+            gameState = GameState.PAUSE;
+            stop();
+        }
+            
+        else
+            System.err.println("game is already running");
     }
     
     public void resumeGame() {
-        
+         if(gameState == GameState.PAUSE) {
+            gameState = GameState.RUNNING;
+            run();
+
+         }
+        else
+            System.err.println("game is not paused so cant be resumed");
     }
     
     public void startGame() {
-        
+        initializeGame(); 
+        run();
     }
     
     public void endGame() {
@@ -99,7 +123,15 @@ public class GameManager implements Runnable {
  
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         
+        timer.start();
+        
+    }
+    
+    public void stop() {
+         
+        timer.stop();
+        
     }
     
      public enum GameState {

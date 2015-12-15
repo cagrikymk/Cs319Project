@@ -43,6 +43,12 @@ public class Brick extends GameObject {
 
     public void setLife(int life) {
         this.life = life;
+        
+        if (life <= 0) {
+           setIsAlive(false);
+           life = 0; // life cannot smaller than 0
+        }
+            
     }
 
     public void setHeight(double height) {
@@ -51,7 +57,8 @@ public class Brick extends GameObject {
 
     public void setWidth(double width) {
         this.width = width;
-    }  
+    }
+ 
     public boolean isAlive (){
         if (life == 0)
             return false;

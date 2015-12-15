@@ -6,23 +6,20 @@
 package model;
 
 import controller.GameFieldManager;
+import javafx.geometry.Point2D;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Shape;
 
 /**
  *
  * @author cagrikaymak
  */
-public class Ball extends GameObject{
+public class Ball extends GameObject {
     
     private double radius;
-    private double speedX;
-    private double speedY;
 
     public Ball(double radius, double x, double y) {
         super(x, y, new Circle(x, y, radius));
         this.radius = radius;
-        speedX = speedY = 0; // initially zero
     }
     
 
@@ -30,17 +27,12 @@ public class Ball extends GameObject{
         return radius;
     }
 
-    public double getSpeedX() {
-        return speedX;
-    }
 
     public void setRadius(double size) {
         this.radius = size;
     }
 
-    public void setSpeedX(double speed) {
-        this.speedX = speed;
-    }
+
     
     
     
@@ -51,16 +43,16 @@ public class Ball extends GameObject{
     public void intialThrowBall(){
         getShape().setLayoutX(GameFieldManager.MAP_WIDTH / 2);
         getShape().setLayoutY(GameFieldManager.MAP_HEIGHT / 2);
-        speedX = (Math.random() * 10) + 3;
-        speedY = (Math.random() * 10) + 3;
+        double speedX = (Math.random() * 5) + 3;
+        double speedY = (Math.random() * 5) + 3;
+        
+        setVelocityVector(getVelocityVector().add(speedX, speedY)); 
+        
     }
     
     public void reflectBall(){
-        
     }
     
-    public void update() {
-        
-    }
+    
     
 }

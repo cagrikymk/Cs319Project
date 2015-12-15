@@ -38,6 +38,7 @@ public class MultiplayerPaneController {
                  multiplayerPane.getPlayButton().setOnAction(e -> {
                        GameManager.getInstance().init(Options.getInstance(), multiplayerPane.getFriction(), null, false, multiplayerPane.getSelectedImageURL());
                        ScreenManager.changeSceneRoot(multiplayerPane, new GameRendererPane());
+                       GameManager.getInstance().startGame();
 		});
               
                 

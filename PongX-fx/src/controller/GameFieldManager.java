@@ -30,6 +30,10 @@ public class GameFieldManager {
         this.imageURL = imageURL;
         this.isSingleplayer = isSingleplayer;
     }
+    
+    public void initGameFieldManager() {
+        gameField.initializeGameField();
+    }
 
    
     
@@ -67,7 +71,7 @@ public class GameFieldManager {
             Shape s1 = Shape.intersect(gameField.getBall().getShape(), p1.getShape());
             if ( s1 != null){
                 //Use power on Ball or Stick
-                p1.setVisible(false);
+               // p1.setVisible(false);
             }
         }
     }
