@@ -11,27 +11,28 @@ package model;
  *
  * @author cagrikaymak
  */
+import java.awt.Point;
 import javafx.scene.shape.Shape;
 import javafx.geometry.Point2D;
 
 public class GameObject {
     
     private Shape shape;
-    private Point2D point;
-    private Point2D velocityVector;
+    private Point point;
+    private Point velocityVector;
     private boolean isAlive;
     
    
-    public GameObject(double axisX, double axisY, Shape shape) {
+    public GameObject(int axisX, int axisY, Shape shape) {
         this.shape = shape;
         isAlive = true;
-        point = new Point2D (axisX, axisY);
-        velocityVector = new Point2D(0, 0); // initial velocity is zero
+        point = new Point (axisX, axisY);
+        velocityVector = new Point(0, 0); // initial velocity is zero
         
     }
     
     
-    public Point2D getLocation(){
+    public Point getLocation(){
         return this.point;
     }
     
@@ -39,9 +40,9 @@ public class GameObject {
         return shape;
     }
     public void uptade (){
-        point = point.add(velocityVector); // just add velocity to current loc
-        shape.setTranslateX(point.getX());
-        shape.setTranslateX(point.getY());
+        point.translate(velocityVector.x, velocityVector.y);
+        shape.setLayoutX(point.getX());
+        shape.setLayoutY(point.getY());
     }
 
     public double getAxisX() {
@@ -54,11 +55,7 @@ public class GameObject {
     }
 
 
-    public Point2D getPoint() {
-        return point;
-    }
-
-    public void setPoint(Point2D point) {
+    public void setLocation(Point point) {
         this.point = point;
     }
     
@@ -71,12 +68,18 @@ public class GameObject {
         this.isAlive = isAlive;
     }
 
-    public Point2D getVelocityVector() {
+    public Point getVelocityVector() {
         return velocityVector;
     }
 
-    public void setVelocityVector(Point2D velocityVector) {
+    public void setVelocityVector(Point velocityVector) {
         this.velocityVector = velocityVector;
+    }
+    
+     public enum Coll {
+
+        RUNNING, GAMEOVER, PAUSE, BEFORESTART
+
     }
     
     

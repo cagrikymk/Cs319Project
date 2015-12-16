@@ -14,7 +14,7 @@ import javafx.scene.shape.Shape;
 public class NegativeBrick extends Brick{
     int speedDown;
 
-    public NegativeBrick(double axisX, double axisY, Shape shape) {
+    public NegativeBrick(int axisX, int axisY, Shape shape) {
         super(axisX, axisY, shape);
     }
 

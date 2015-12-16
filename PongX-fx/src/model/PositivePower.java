@@ -16,7 +16,7 @@ public class PositivePower extends Power{
     private double enlargeHeight;
     private double enlargeWidht;
 
-    public PositivePower(double axisX, double axisY, Shape shape) {
+    public PositivePower(int axisX, int axisY, Shape shape) {
         super(axisX, axisY, shape);
     }
 

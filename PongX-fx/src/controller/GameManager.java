@@ -119,6 +119,8 @@ public class GameManager implements Runnable {
     public void setGameFieldManager(GameFieldManager gameFieldManager) {
         this.gameFieldManager = gameFieldManager;
     }
+    
+    
 
  
     @Override

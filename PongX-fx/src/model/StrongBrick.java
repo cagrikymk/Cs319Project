@@ -14,7 +14,7 @@ import javafx.scene.shape.Shape;
 public class StrongBrick extends Brick {
     private int extraLife;
 
-    public StrongBrick(double axisX, double axisY, Shape shape) {
+    public StrongBrick(int axisX, int axisY, Shape shape) {
         super(axisX, axisY, shape);
     }
 

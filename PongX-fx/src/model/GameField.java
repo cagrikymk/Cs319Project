@@ -5,8 +5,11 @@
  */
 package model;
 
+import java.awt.Point;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 /**
  *
@@ -18,7 +21,7 @@ public class GameField {
     private ArrayList<Brick> bricks;
     private double friction;
     private String imageURL;
-    
+    private Rectangle activeField;
     private Stick players[];
 
     public GameField( Ball ball, ArrayList<Power> Powers, ArrayList<Brick> bricks, double friction, String imageURL) {
@@ -28,13 +31,12 @@ public class GameField {
         this.friction = friction;
         this.imageURL = imageURL;
         players = new Stick[2];
+        activeField = new Rectangle(181, 84, 1000, 600);  
     }
     
     public void initializeGameField() {
-        ball.intialThrowBall();
+        ball.intialThrowBall(590, 340);
     }
-
-   
 
     public ArrayList<Power> getPowers() {
         return powers;
@@ -101,7 +103,28 @@ public class GameField {
 
     public void update() {
         // update all game objects which are still alive
-        ball.uptade();
-        
+        ball.uptade();    
     }
+
+    public Rectangle getActiveField() {
+        return activeField;
+    }
+    
+    public double getBorderRight() {
+        return getActiveField().getWidth() + getActiveField().getX();
+    }
+    
+    public double getBorderLeft() {
+        return getActiveField().getX();
+    }
+    
+    public double getBorderTop() {
+        return getActiveField().getY();
+    }
+    
+    public double getBorderBottom() {
+        return getActiveField().getY() + getActiveField().getHeight();
+    }
+
+    
 }

@@ -17,7 +17,7 @@ public class Stick extends GameObject{
     private double width;
     private double speed;
 
-    public Stick(double axisX, double axisY, Shape shape) {
+    public Stick(int axisX, int axisY, Shape shape) {
         super(axisX, axisY, shape);
     }
 

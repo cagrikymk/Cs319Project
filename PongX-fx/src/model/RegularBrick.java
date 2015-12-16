@@ -13,7 +13,7 @@ import javafx.scene.shape.Shape;
  */
 public class RegularBrick extends Brick {
 
-    public RegularBrick(double axisX, double axisY, Shape shape) {
+    public RegularBrick(int axisX, int axisY, Shape shape) {
         super(axisX, axisY, shape);
     }
     

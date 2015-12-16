@@ -44,6 +44,7 @@ public class GameFieldManager {
     }
     
     public void updateGameField() {
+        detectBorderCollision();
         gameField.update();
     }
     
@@ -51,7 +52,7 @@ public class GameFieldManager {
         for ( Brick b1 : gameField.getBricks()){
             Shape s1 = Shape.intersect(gameField.getBall().getShape(), b1.getShape());
             if ( s1 != null){
-                gameField.getBall().reflectBall();
+                //gameField.getBall().reflectBall();
                 //b1.update()?
             }
         }
@@ -61,7 +62,7 @@ public class GameFieldManager {
         for ( Stick st1 : gameField.getPlayers()){
             Shape s1 = Shape.intersect(gameField.getBall().getShape(), st1.getShape());
             if ( s1 != null){
-                gameField.getBall().reflectBall();
+                //gameField.getBall().reflectBall();
             }
         }
     }
@@ -77,10 +78,16 @@ public class GameFieldManager {
     }
     
     public void detectBorderCollision() {
-//        if ( gameField.getBall().getLocation().getY() <= GAMEFIELDUPBORDER)
-//              gameField.getBall().reflectBall();
-//        if ( gameField.getBall().getLocation().getY() >= GAMEFIELDDOWNBORDER)
-//              gameField.getBall().reflectBall();     
+        Ball ball = gameField.getBall(); 
+        if ( ball.getAxisY() + ball.getRadius()  >= gameField.getBorderBottom())
+              ball.reflectBall1();
+        if ( ball.getAxisY()  - ball.getRadius() <= gameField.getBorderTop())
+              ball.reflectBall1(); 
+        
+        if ( ball.getAxisX()  + ball.getRadius() >= gameField.getBorderRight())
+            ball.reflectBall2();
+        if ( ball.getAxisX()  - ball.getRadius() <= gameField.getBorderLeft())
+            ball.reflectBall2(); 
     }
     
     public void detectGoalAreaCollision() {

@@ -15,7 +15,7 @@ public class Power extends GameObject {
     private int powerID;
     private double size;
 
-    public Power(double axisX, double axisY, Shape shape) {
+    public Power(int axisX, int axisY, Shape shape) {
         super(axisX, axisY, shape);
     }
 

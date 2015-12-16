@@ -16,7 +16,7 @@ public class NegativePower extends Power{
     private double shrinkHeight;
     private double shrinkWidht;
 
-    public NegativePower(double axisX, double axisY, Shape shape) {
+    public NegativePower(int axisX, int axisY, Shape shape) {
         super(axisX, axisY, shape);
     }
 

@@ -26,12 +26,13 @@ public class GameRendererPane extends Pane {
         gameFieldManager = gameManager.getGameFieldManager();
         gameField = gameFieldManager.getGameField();
         // drawing game background
-        gameBackgroundImage = new ImageView(new Image(getClass().getResourceAsStream(gameField.getImageURL()), 840, 420, false, true));
-        gameBackgroundImage.setLayoutX(200);
-        gameBackgroundImage.setLayoutY(100);
+        gameBackgroundImage = new ImageView(new Image(getClass().getResourceAsStream(gameField.getImageURL()), 
+                gameField.getActiveField().getWidth(), gameField.getActiveField().getHeight(), false, true));
+        gameBackgroundImage.setLayoutX(gameField.getActiveField().getX());
+        gameBackgroundImage.setLayoutY(gameField.getActiveField().getY());
+        
         getChildren().addAll(gameBackgroundImage);
         
-        gameField.getBall().intialThrowBall();
         getChildren().addAll(gameField.getBall().getShape());
     }
     

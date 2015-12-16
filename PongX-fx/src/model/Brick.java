@@ -17,7 +17,7 @@ public class Brick extends GameObject {
     double height;
     double width;
 
-    public Brick(double axisX, double axisY, Shape shape) {
+    public Brick(int axisX, int axisY, Shape shape) {
         super(axisX, axisY, shape);
     }
 
