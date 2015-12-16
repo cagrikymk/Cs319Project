@@ -37,9 +37,9 @@ public class GameManager implements Runnable {
         return gameManagerInstance;
     }
     
-    public void init(Options options, double friction, ArrayList<Brick> brickSet, boolean isSingleplayer, String imageURL) {
+    public void init(Options options, double friction, String brickSet, boolean isSingleplayer, String imageURL) {
         if(gameManagerInstance != null) {
-            gameFieldManager = new GameFieldManager(friction, brickSet, false, imageURL);
+            gameFieldManager = new GameFieldManager(friction, null, false, imageURL);
             this.options = options;
             gameState = GameState.BEFORESTART; 
         }
@@ -118,6 +118,22 @@ public class GameManager implements Runnable {
 
     public void setGameFieldManager(GameFieldManager gameFieldManager) {
         this.gameFieldManager = gameFieldManager;
+    }
+    
+    private ArrayList<Brick> getBrickFromFile(String brickSet) {
+        if(brickSet == "Empty brick set") {
+            return new ArrayList<>(0);
+        }
+        else if(brickSet == "Brick set 1") {
+            
+        }
+        else if(brickSet == "Brick set 2") {
+            
+        }
+        else if(brickSet == "Brick set 3") {
+            
+        }
+        return null;
     }
     
     

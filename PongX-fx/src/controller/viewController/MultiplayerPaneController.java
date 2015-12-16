@@ -38,7 +38,7 @@ public class MultiplayerPaneController {
                  multiplayerPane.getPlayButton().setOnAction(e -> {
                        String brickSet = (String)multiplayerPane.getBrickSetComboBox().getValue();
                        
-                       GameManager.getInstance().init(Options.getInstance(), multiplayerPane.getFriction(), null, false, multiplayerPane.getSelectedImageURL());
+                       GameManager.getInstance().init(Options.getInstance(), multiplayerPane.getFriction(), "aa", false, multiplayerPane.getSelectedImageURL());
                        ScreenManager.changeSceneRoot(multiplayerPane, new GameRendererPane());
                        GameManager.getInstance().startGame();
 		});

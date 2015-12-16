@@ -5,9 +5,6 @@
  */
 package model;
 
-import controller.GameFieldManager;
-import java.awt.Point;
-import javafx.geometry.Point2D;
 import javafx.scene.shape.Circle;
 
 /**
@@ -43,29 +40,27 @@ public class Ball extends GameObject {
     
     public void intialThrowBall(int x, int y){
         this.getLocation().translate(x, y);
-        double speedX = (Math.random() * 5) + 3;
-        double speedY = (Math.random() * 5) + 3;
+        double speedX = 7;
+        double speedY = 7;
         
         getVelocityVector().setLocation(speedY, speedY);
         
     }
      // top bottom reflect
-    public void reflectBall1(){
-        System.out.println("reflect ball 1--" + getLocation().toString());
-        System.out.println("reflect ball 1--" + getVelocityVector().toString());
-        getVelocityVector().y = -1 * getVelocityVector().y; 
-     
-    }
-     // right left reflect
-    public void reflectBall2(){
-        getVelocityVector().x = -1 * getVelocityVector().x;         
+    public void reflectBall(ImpactLocation location){
+        if(location == ImpactLocation.BOTTOM || location == ImpactLocation.TOP)
+            getVelocityVector().y = -1 * getVelocityVector().y; 
+        else if(location == ImpactLocation.LEFT || location == ImpactLocation.RIGHT)
+            getVelocityVector().x = -1 * getVelocityVector().x;         
+
     }
     
-   
-  
     
-    
-    
-    
+    public enum ImpactLocation {
+
+        RIGHT, LEFT, TOP, BOTTOM
+
+    }
+       
     
 }

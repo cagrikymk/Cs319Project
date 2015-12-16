@@ -80,14 +80,14 @@ public class GameFieldManager {
     public void detectBorderCollision() {
         Ball ball = gameField.getBall(); 
         if ( ball.getAxisY() + ball.getRadius()  >= gameField.getBorderBottom())
-              ball.reflectBall1();
+              ball.reflectBall(Ball.ImpactLocation.BOTTOM);
         if ( ball.getAxisY()  - ball.getRadius() <= gameField.getBorderTop())
-              ball.reflectBall1(); 
+              ball.reflectBall(Ball.ImpactLocation.TOP); 
         
         if ( ball.getAxisX()  + ball.getRadius() >= gameField.getBorderRight())
-            ball.reflectBall2();
+            ball.reflectBall(Ball.ImpactLocation.RIGHT);
         if ( ball.getAxisX()  - ball.getRadius() <= gameField.getBorderLeft())
-            ball.reflectBall2(); 
+            ball.reflectBall(Ball.ImpactLocation.LEFT); 
     }
     
     public void detectGoalAreaCollision() {
