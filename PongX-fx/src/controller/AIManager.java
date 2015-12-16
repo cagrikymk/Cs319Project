@@ -10,5 +10,8 @@ package controller;
  * @author cagrikaymak
  */
 public class AIManager {
-    
+//    if self.ball.y < self.player2.center_y:
+//    self.player2.center_y = self.player2.center_y - 3
+//    if self.ball.y > self.player2.center_y:
+//    self.player2.center_y = self.player2.center_y + 3
 }
