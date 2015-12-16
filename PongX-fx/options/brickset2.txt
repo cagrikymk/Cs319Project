@@ -1,0 +1,6 @@
+RegularBrick 400 360
+RegularBrick 850 350
+NegativeBrick 550 250
+PositiveBrick 721 600
+StrongBrick 600 400
+FastBrick 755 220

@@ -6,6 +6,7 @@
 package controller.viewController;
 
 import controller.GameManager;
+import controller.InputManager;
 import controller.ScreenManager;
 import model.Options;
 import view.GameRendererPane;
@@ -38,7 +39,7 @@ public class MultiplayerPaneController {
                  multiplayerPane.getPlayButton().setOnAction(e -> {
                        String brickSet = (String)multiplayerPane.getBrickSetComboBox().getValue();
                        
-                       GameManager.getInstance().init(Options.getInstance(), multiplayerPane.getFriction(), "aa", false, multiplayerPane.getSelectedImageURL());
+                       GameManager.getInstance().init(Options.getInstance(), multiplayerPane.getFriction(), brickSet, false, multiplayerPane.getSelectedImageURL());
                        ScreenManager.changeSceneRoot(multiplayerPane, new GameRendererPane());
                        GameManager.getInstance().startGame();
 		});

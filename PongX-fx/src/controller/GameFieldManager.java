@@ -6,12 +6,14 @@
 package controller;
 
 import java.util.ArrayList;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import model.Stick;
 import model.Power;
 import model.Ball;
 import model.Brick;
 import model.GameField;
+import model.Options;
 
 /**
  *
@@ -20,15 +22,23 @@ import model.GameField;
 public class GameFieldManager {
     private SoundManager soundManager;
     private GameField gameField;
-    public final static int MAP_HEIGHT = 100;
-    public final static int MAP_WIDTH = 100;
+    public final static int MAP_HEIGHT = 600;
+    public final static int MAP_WIDTH = 1000;
     private String imageURL;
     private boolean isSingleplayer;
+    private int player1Score = 0;
+    private int player2Score = 0;
+    private InputManager inputManager;
 
     public GameFieldManager(double friction, ArrayList<Brick> brickSet, boolean isSingleplayer, String imageURL) {
-        gameField = new GameField(new Ball(20, 0, 0), null, brickSet, friction, imageURL);
+        Stick sticks[] = new Stick[2];
+        sticks[0] = new Stick(200, MAP_HEIGHT/2 + 40, new Rectangle(20, 100));
+        sticks[1] = new Stick(MAP_WIDTH + 100, MAP_HEIGHT/2 + 40, new Rectangle(20, 100));
+        
+        gameField = new GameField(new Ball(10, 0, 0), brickSet, sticks, friction, imageURL);
         this.imageURL = imageURL;
         this.isSingleplayer = isSingleplayer;
+        inputManager = new InputManager(Options.getInstance().getP1Keys(), Options.getInstance().getP2Keys(), gameField.getPlayers()[0]);
     }
     
     public void initGameFieldManager() {
@@ -45,24 +55,65 @@ public class GameFieldManager {
     
     public void updateGameField() {
         detectBorderCollision();
+        detectBrickBallCollision();
+        detectStickBallCollision();
         gameField.update();
     }
     
-    public void detectBrickBallCollision() {
+   public void detectBrickBallCollision() {
         for ( Brick b1 : gameField.getBricks()){
-            Shape s1 = Shape.intersect(gameField.getBall().getShape(), b1.getShape());
-            if ( s1 != null){
-                //gameField.getBall().reflectBall();
-                //b1.update()?
+            Ball ball = gameField.getBall();
+            boolean impact = false;
+            if (b1.getAxisX() <= ball.getAxisX() && ball.getAxisX() <= b1.getAxisX() + b1.getWidth()){
+                if ((b1.getAxisY() + b1.getHeight()) >= (ball.getAxisY() - ball.getRadius()) &&
+                        (b1.getAxisY()) <= (ball.getAxisY() - ball.getRadius())){
+                    impact = true;
+                    ball.reflectBall(Ball.ImpactLocation.TOP);
+                }
+                else if (b1.getAxisY() <= ball.getAxisY() + ball.getRadius() &&  b1.getAxisY() >= ball.getAxisY() - ball.getRadius()){
+                    ball.reflectBall(Ball.ImpactLocation.BOTTOM);
+                    impact = true;
+
+                }  
             }
-        }
-    } 
+            else if (b1.getAxisY() <= ball.getAxisY() && ball.getAxisY() <= b1.getAxisY() + b1.getHeight() && !impact){
+                if (b1.getAxisX() <= ball.getAxisX() - ball.getRadius() && 
+                        b1.getAxisX() + b1.getWidth() >= ball.getAxisX() - ball.getRadius()){
+                    ball.reflectBall(Ball.ImpactLocation.LEFT);
+                }
+                else if (b1.getAxisX() + b1.getWidth() >= ball.getAxisX() + ball.getRadius() && 
+                        b1.getAxisX() <= ball.getAxisX() + ball.getRadius() ){
+                    ball.reflectBall(Ball.ImpactLocation.RIGHT);
+                } 
+            }
+        } 
+   }
     
     public void detectStickBallCollision() {
-        for ( Stick st1 : gameField.getPlayers()){
-            Shape s1 = Shape.intersect(gameField.getBall().getShape(), st1.getShape());
-            if ( s1 != null){
-                //gameField.getBall().reflectBall();
+        for ( Stick s1 : gameField.getPlayers()){
+            Ball ball = gameField.getBall();
+            boolean impact = false;
+            if (s1.getAxisX() <= ball.getAxisX() && ball.getAxisX() <= s1.getAxisX() + s1.getWidth()){
+                if ((s1.getAxisY() + s1.getHeight()) >= (ball.getAxisY() - ball.getRadius()) &&
+                        (s1.getAxisY()) <= (ball.getAxisY() - ball.getRadius())){
+                    impact = true;
+                    ball.reflectBall(Ball.ImpactLocation.TOP);
+                }
+                else if (s1.getAxisY() <= ball.getAxisY() + ball.getRadius() &&  s1.getAxisY() >= ball.getAxisY() - ball.getRadius()){
+                    ball.reflectBall(Ball.ImpactLocation.BOTTOM);
+                    impact = true;
+
+                }  
+            }
+            else if (s1.getAxisY() <= ball.getAxisY() && ball.getAxisY() <= s1.getAxisY() + s1.getHeight() && !impact){
+                if (s1.getAxisX() <= ball.getAxisX() - ball.getRadius() && 
+                        s1.getAxisX() + s1.getWidth() >= ball.getAxisX() - ball.getRadius()){
+                    ball.reflectBall(Ball.ImpactLocation.LEFT);
+                }
+                else if (s1.getAxisX() + s1.getWidth() >= ball.getAxisX() + ball.getRadius() && 
+                        s1.getAxisX() <= ball.getAxisX() + ball.getRadius() ){
+                    ball.reflectBall(Ball.ImpactLocation.RIGHT);
+                } 
             }
         }
     }
@@ -84,10 +135,17 @@ public class GameFieldManager {
         if ( ball.getAxisY()  - ball.getRadius() <= gameField.getBorderTop())
               ball.reflectBall(Ball.ImpactLocation.TOP); 
         
-        if ( ball.getAxisX()  + ball.getRadius() >= gameField.getBorderRight())
+        if ( ball.getAxisX()  + ball.getRadius() >= gameField.getBorderRight()){
+            player1Score += 1;
             ball.reflectBall(Ball.ImpactLocation.RIGHT);
-        if ( ball.getAxisX()  - ball.getRadius() <= gameField.getBorderLeft())
-            ball.reflectBall(Ball.ImpactLocation.LEFT); 
+            //ball.intialThrowBall(625, 340);
+        }
+        if ( ball.getAxisX()  - ball.getRadius() <= gameField.getBorderLeft()){
+            player2Score += 1;
+                        ball.reflectBall(Ball.ImpactLocation.LEFT);
+
+            //ball.intialThrowBall(590,340);
+        }
     }
     
     public void detectGoalAreaCollision() {
@@ -121,5 +179,15 @@ public class GameFieldManager {
     public void setIsSingleplayer(boolean isSingleplayer) {
         this.isSingleplayer = isSingleplayer;
     } 
+
+    public InputManager getInputManager() {
+        return inputManager;
+    }
+
+    public void setInputManager(InputManager inputManager) {
+        this.inputManager = inputManager;
+    }
+    
+    
     
 }

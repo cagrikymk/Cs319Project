@@ -24,13 +24,12 @@ public class GameField {
     private Rectangle activeField;
     private Stick players[];
 
-    public GameField( Ball ball, ArrayList<Power> Powers, ArrayList<Brick> bricks, double friction, String imageURL) {
+    public GameField( Ball ball, ArrayList<Brick> bricks, Stick sticks[], double friction, String imageURL) {
         this.ball = ball;
-        this.powers = Powers;
         this.bricks = bricks;
         this.friction = friction;
         this.imageURL = imageURL;
-        players = new Stick[2];
+        players = sticks;
         activeField = new Rectangle(181, 84, 1000, 600);  
     }
     
@@ -103,7 +102,9 @@ public class GameField {
 
     public void update() {
         // update all game objects which are still alive
-        ball.uptade();    
+        ball.uptade();
+        players[0].uptade();
+        players[1].uptade();
     }
 
     public Rectangle getActiveField() {

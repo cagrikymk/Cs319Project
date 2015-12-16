@@ -14,9 +14,10 @@ import javafx.scene.shape.Shape;
 public class FastBrick extends Brick {
     private double speedUP;
 
-    public FastBrick(int axisX, int axisY, Shape shape) {
-        super(axisX, axisY, shape);
+    public FastBrick(int axisX, int axisY) {
+        super(axisX, axisY);
     }
+
 
     public double getSpeedUP() {
         return speedUP;

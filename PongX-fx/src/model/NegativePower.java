@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.awt.Point;
 import javafx.scene.shape.Shape;
 
 /**
@@ -12,44 +13,29 @@ import javafx.scene.shape.Shape;
  * @author cagrikaymak
  */
 public class NegativePower extends Power{
-    private double slowDown;
+    private double slowDown = 3;
     private double shrinkHeight;
     private double shrinkWidht;
 
     public NegativePower(int axisX, int axisY, Shape shape) {
         super(axisX, axisY, shape);
+        super.setPowerID(0);
     }
 
     public double getSlowDown() {
         return slowDown;
     }
 
-    public double getShrinkHeight() {
-        return shrinkHeight;
-    }
-
-    public double getShrinkWidht() {
-        return shrinkWidht;
-    }
-
     public void setSlowDown(double slowDown) {
         this.slowDown = slowDown;
     }
-
-    public void setShrinkHeight(double shrinkHeight) {
-        this.shrinkHeight = shrinkHeight;
-    }
-
-    public void setShrinkWidht(double shrinkWidht) {
-        this.shrinkWidht = shrinkWidht;
-    }
-
-
     
-   public void enlargePaddle(Stick s){
-       s.changeSize(s.getWidth()-shrinkWidht, s.getHeight()-shrinkHeight);
+    
+    public void getPower(Ball b1 ){
+       Point p1 = b1.getVelocityVector();
+       p1.x -= p1.x/ slowDown;
+       p1.y -= p1.y/ slowDown;
+       b1.setVelocityVector( p1 );
    }
-   public void speedPaddle(Stick s){
-       s.changeSpeed(s.getSpeed()-slowDown);
-   }
+   
 }

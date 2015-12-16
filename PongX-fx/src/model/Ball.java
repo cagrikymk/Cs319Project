@@ -13,9 +13,9 @@ import javafx.scene.shape.Circle;
  */
 public class Ball extends GameObject {
     
-    private double radius;
+    private int radius;
 
-    public Ball(double radius, int x, int y) {
+    public Ball(int radius, int x, int y) {
         super(x, y, new Circle(x, y, radius));
         this.radius = radius;
     }
@@ -26,7 +26,7 @@ public class Ball extends GameObject {
     }
 
 
-    public void setRadius(double size) {
+    public void setRadius(int size) {
         this.radius = size;
     }
 
@@ -34,12 +34,13 @@ public class Ball extends GameObject {
     
     
     
-    public void changeSize (double r) {
+    public void changeSize (int r) {
         setRadius(r);
+        ((Circle)getShape()).setRadius(r);
     }
     
     public void intialThrowBall(int x, int y){
-        this.getLocation().translate(x, y);
+        this.getLocation().setLocation(x, y);
         double speedX = 7;
         double speedY = 7;
         

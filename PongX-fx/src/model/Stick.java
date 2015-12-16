@@ -5,6 +5,7 @@
  */
 package model;
 
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 /**
@@ -13,41 +14,35 @@ import javafx.scene.shape.Shape;
  */
 public class Stick extends GameObject{
     
-    private double height;
-    private double width;
-    private double speed;
 
     public Stick(int axisX, int axisY, Shape shape) {
         super(axisX, axisY, shape);
     }
 
-    public double getHeight() {
-        return height;
+   public double getHeight() {
+        return ((Rectangle)getShape()).getHeight();
     }
 
     public double getWidth() {
-        return width;
+        return ((Rectangle)getShape()).getWidth();
     }
 
     public double getSpeed() {
-        return speed;
+        return getVelocityVector().y;
     }
 
     public void setHeight(double height) {
-        this.height = height;
+        ((Rectangle)getShape()).setHeight(height);
     }
 
     public void setWidth(double width) {
-        this.width = width;
+        ((Rectangle)getShape()).setWidth(width);
     }
 
     public void setSpeed(double speed) {
-        this.speed = speed;
+        getVelocityVector().y = (int) speed;
     }
     
-    public void changeSpeed(double s){
-        setSpeed(s);
-    }
     
     public void changeSize(double w, double h){
         setWidth(w);
@@ -57,4 +52,6 @@ public class Stick extends GameObject{
     public void applyPower(int pwrID){
         
     }
+
+
 }

@@ -5,10 +5,21 @@
  */
 package controller;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
+import javafx.scene.shape.Rectangle;
 import model.Brick;
+import model.FastBrick;
+import model.NegativeBrick;
 import model.Options;
+import model.RegularBrick;
+import model.StrongBrick;
 
 /**
  *
@@ -39,7 +50,12 @@ public class GameManager implements Runnable {
     
     public void init(Options options, double friction, String brickSet, boolean isSingleplayer, String imageURL) {
         if(gameManagerInstance != null) {
-            gameFieldManager = new GameFieldManager(friction, null, false, imageURL);
+            
+            try {
+                gameFieldManager = new GameFieldManager(friction, getBrickFromFile(brickSet), false, imageURL);
+            } catch (IOException ex) {
+                System.err.println("bricks couldnt load");
+            }
             this.options = options;
             gameState = GameState.BEFORESTART; 
         }
@@ -120,20 +136,51 @@ public class GameManager implements Runnable {
         this.gameFieldManager = gameFieldManager;
     }
     
-    private ArrayList<Brick> getBrickFromFile(String brickSet) {
+    private ArrayList<Brick> getBrickFromFile(String brickSet) throws FileNotFoundException, IOException {
+        
         if(brickSet == "Empty brick set") {
             return new ArrayList<>(0);
         }
-        else if(brickSet == "Brick set 1") {
-            
+        else {  
+             BufferedReader bufferedReader = null;
+             String fileLoc = null;
+             ArrayList<Brick> bricks = new ArrayList<Brick>();
+             System.out.println(brickSet);
+            try {
+                if(brickSet == "Brick set 1") {
+                    fileLoc = "options/brickset1.txt";              
+                }
+                else if(brickSet == "Brick set 2") {
+                    fileLoc = "options/brickset2.txt";
+                }
+                else if(brickSet == "Brick set 3") {
+                    fileLoc = "options/brickset3.txt";   
+                }
+                bufferedReader = new BufferedReader(new FileReader(fileLoc));
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    String arr[] = line.split(" ");
+                    if (arr[0] == "NegativeBrick") {
+                        bricks.add(new NegativeBrick(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
+                    }
+                    else if (arr[0] == "FastBrick") {
+                        bricks.add(new FastBrick(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
+                    }
+                    else if (arr[0] == "StrongBrick") {
+                        bricks.add(new StrongBrick(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
+                    }
+                    else {
+                        bricks.add(new RegularBrick(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
+                    }
+                }           
+            } 
+            finally {
+                if (bufferedReader != null)
+                    bufferedReader.close();
+            }
+            return bricks;
         }
-        else if(brickSet == "Brick set 2") {
-            
-        }
-        else if(brickSet == "Brick set 3") {
-            
-        }
-        return null;
+     
     }
     
     

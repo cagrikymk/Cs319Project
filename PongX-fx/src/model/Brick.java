@@ -10,15 +10,14 @@ package model;
  * @author cagrikaymak
  */
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 public class Brick extends GameObject {
     Image texture;
     int life;
-    double height;
-    double width;
 
-    public Brick(int axisX, int axisY, Shape shape) {
-        super(axisX, axisY, shape);
+    public Brick(int axisX, int axisY) {
+        super(axisX, axisY, new Rectangle(axisX, axisY, 20, 150));
     }
 
     public Image getTexture() {
@@ -30,11 +29,11 @@ public class Brick extends GameObject {
     }
 
     public double getHeight() {
-        return height;
+        return ((Rectangle)getShape()).getHeight();
     }
 
     public double getWidth() {
-        return width;
+        return ((Rectangle)getShape()).getWidth();
     }
 
     public void setTexture(Image texture) {
@@ -52,11 +51,11 @@ public class Brick extends GameObject {
     }
 
     public void setHeight(double height) {
-        this.height = height;
+        ((Rectangle)getShape()).setHeight(height);
     }
 
     public void setWidth(double width) {
-        this.width = width;
+        ((Rectangle)getShape()).setHeight(width);
     }
  
     public boolean isAlive (){

@@ -6,6 +6,7 @@
 package controller;
 
 import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import model.Stick;
 
@@ -22,16 +23,18 @@ public class InputManager implements EventHandler<KeyEvent> {
     public InputManager(String[] p1Keys, String[] p2Keys, Stick p1) {
         this.p1Keys = p1Keys;
         this.p2Keys = p2Keys;
+        this.p1 = p1;
     }
     
 
     @Override
     public void handle(KeyEvent event) {
-        if(p1Keys[0] == event.getText()) {
-            p1.getLocation().y = p1.getLocation().y - 5;
+        if(event.getCode() == KeyCode.W) {
+            p1.getLocation().y = p1.getLocation().y - 10;
+            
         }
-        if(p1Keys[1] == event.getText()) {
-            p1.getLocation().y = p1.getLocation().y + 5;
+        if(event.getCode() == KeyCode.S) {
+            p1.getLocation().y = p1.getLocation().y + 10;
         }
     }
     
