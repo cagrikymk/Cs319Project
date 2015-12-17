@@ -47,6 +47,7 @@ public class GameFieldManager {
         this.imageURL = imageURL;
         this.isSingleplayer = isSingleplayer;
         inputManager = new InputManager(Options.getInstance().getP1Keys(), Options.getInstance().getP2Keys(), gameField.getPlayers()[0]);
+        soundManager = new SoundManager();
         
         if(isSingleplayer == false) {
             inputManager.setP2(gameField.getPlayers()[1]); // multi so input manager handles both user's inputs
@@ -133,11 +134,13 @@ public class GameFieldManager {
                 }
             } else if (s1.getShape().intersects(ball.getShape().getBoundsInParent())) {
                 impact = true;
+                
                 ball.reflectBall(Ball.ImpactLocation.RIGHT);
                 ball.reflectBall(Ball.ImpactLocation.BOTTOM);
             }
 
             if (impact == true) {
+                soundManager.playMusic("/blaster.mp3");
                 if (s1 == gameField.getPlayer(0)) {
                     ball.setLastHit(0);
                     System.out.println("BALL HIT P1");

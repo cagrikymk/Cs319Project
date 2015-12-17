@@ -3,17 +3,39 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/NegativePower.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/Ball.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/PositivePower.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/GameObject.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/controller/GameManager.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/StickPositivePower.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/StickNegativePower.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/controller/GameFieldManager.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/NegativeBrick.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/GameField.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/Power.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/cursor.png</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/view/SingleplayerPane.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/controller/GameFieldManager.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/view/CreditsPane.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/model/Brick.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/model/FastBrick.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/gameBG3.jpg</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/bricks/FastBrick.png</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/model/GameObject.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/controller/ScreenManager.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/view/OptionsPane.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/controller/viewController/MainMenuController.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/emptybg.png</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/controller/GameManager.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/controller/viewController/OptionsPaneController.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/view/PlayGameMenuPane.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/gameBG2.jpg</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/model/GameField.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/controller/SoundManager.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/controller/InputManager.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/controller/AIManager.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/controller/viewController/SingleplayerPaneController.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/bricks/StrongBrick.png</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/bricks/NegativeBrick.png</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/view/MultiplayerPane.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/model/Ball.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/gameBG1.jpg</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/bricks/RegularBrick.png</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/view/GameRendererPane.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/bg.png</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/main.css</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/mainPackage/MainClass.java</file>
+            <file>file:/C:/Users/DoğukhanÖmer/Documents/GitHub/Cs319Project/PongX-fx/src/controller/GameController.java</file>
         </group>
     </open-files>
 </project-private>
