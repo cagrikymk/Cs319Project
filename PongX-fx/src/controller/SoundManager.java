@@ -20,16 +20,17 @@ import sun.audio.AudioPlayer;
 
 public class SoundManager {
     
-    public void playBackgroundMusic( String s){
-        final URL resource = getClass().getResource(s);
+    
+    public static void playBackgroundMusic( String s){
+        final URL resource = controller.SoundManager.class.getResource(s);
         final Media media = new Media(resource.toString());
         final MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.cycleCountProperty();
         mediaPlayer.play();
     }
-    public void playMusic( String s){
-        final URL resource = getClass().getResource(s);
+    public static void playMusic( String s){
+        final URL resource = controller.SoundManager.class.getResource(s);
         final Media media = new Media(resource.toString());
         final MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();

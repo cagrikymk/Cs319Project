@@ -102,8 +102,13 @@ public class GameFieldManager {
                 ball.reflectBall(Ball.ImpactLocation.BOTTOM);
                 impact = true;
             }
-            if(impact == true)
+            if(impact == true){
                 b1.decreaseLife(); // if brick is hitted decrease life
+                if (b1.getLife() == 0)
+                    SoundManager.playMusic("/explosion.mp3");
+                else
+                    SoundManager.playMusic("/blaster.mp3");
+            }
         }
     }
 
@@ -140,7 +145,7 @@ public class GameFieldManager {
             }
 
             if (impact == true) {
-                soundManager.playMusic("/blaster.mp3");
+                SoundManager.playMusic("/blaster.mp3");
                 if (s1 == gameField.getPlayer(0)) {
                     ball.setLastHit(0);
                     System.out.println("BALL HIT P1");
@@ -152,6 +157,7 @@ public class GameFieldManager {
     }
 
     public void detectPowerBallCollision() {
+        
         for (Power p1 : gameField.getPowers()) {
             //Shape s1 = Shape.intersect(gameField.getBall().getShape(), p1.getShape());
             if (p1.getShape().intersects(gameField.getBall().getShape().getBoundsInParent())) {
@@ -174,6 +180,7 @@ public class GameFieldManager {
                     }
                 }
                 p1.setIsAlive(false);
+                SoundManager.playMusic("/power.mp3");
             }
         }
     }
