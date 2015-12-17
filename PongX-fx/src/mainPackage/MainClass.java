@@ -50,7 +50,7 @@ public class MainClass extends Application {
                 
                 ScreenManager.setScene(scene);
                 ScreenManager.setPrimaryStage(primaryStage);
-                SoundManager.playBackgroundMusic("/ali.mp3");
+                SoundManager.playBackgroundMusic();
             
 		
 		// CSS Connection

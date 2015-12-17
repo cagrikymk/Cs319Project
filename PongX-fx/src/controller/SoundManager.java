@@ -9,6 +9,7 @@ import java.net.URL;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import model.Options;
 import sun.audio.AudioPlayer;
 
 
@@ -20,19 +21,44 @@ import sun.audio.AudioPlayer;
 
 public class SoundManager {
     
-    
-    public static void playBackgroundMusic( String s){
-        final URL resource = controller.SoundManager.class.getResource(s);
+    private static String explosionSound = "/explosion.mp3";
+    private static String blasterSound = "/blaster.mp3";
+    private static String powerSound = "/power.mp3";
+    private static String backgroundMusic = "/ali.mp3";
+    private static MediaPlayer mediaPlayer;
+    public static void playBackgroundMusic(){
+        final URL resource = controller.SoundManager.class.getResource(backgroundMusic);
         final Media media = new Media(resource.toString());
-        final MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.cycleCountProperty();
         mediaPlayer.play();
     }
     public static void playMusic( String s){
-        final URL resource = controller.SoundManager.class.getResource(s);
-        final Media media = new Media(resource.toString());
-        final MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
+        if(Options.getInstance().isIsSoundEnabled()) {
+            final URL resource = controller.SoundManager.class.getResource(s);
+            final Media media = new Media(resource.toString());
+            final MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.play();
+        }    
+        
     }
+    
+    public static void playExplosionSound() {
+        playMusic(explosionSound);
+    }
+    
+     public static void playPowerSound() {
+        playMusic(powerSound);
+    }
+     
+      public static void playBlasterSound() {
+        playMusic(blasterSound);
+    }
+
+    public static MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
+      
+      
 }

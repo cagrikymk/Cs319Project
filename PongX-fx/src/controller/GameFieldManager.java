@@ -105,9 +105,9 @@ public class GameFieldManager {
             if(impact == true){
                 b1.decreaseLife(); // if brick is hitted decrease life
                 if (b1.getLife() == 0)
-                    SoundManager.playMusic("/explosion.mp3");
+                    SoundManager.playExplosionSound();
                 else
-                    SoundManager.playMusic("/blaster.mp3");
+                    SoundManager.playBlasterSound();
             }
         }
     }
@@ -145,7 +145,7 @@ public class GameFieldManager {
             }
 
             if (impact == true) {
-                SoundManager.playMusic("/blaster.mp3");
+                    SoundManager.playBlasterSound();
                 if (s1 == gameField.getPlayer(0)) {
                     ball.setLastHit(0);
                     System.out.println("BALL HIT P1");
@@ -180,7 +180,7 @@ public class GameFieldManager {
                     }
                 }
                 p1.setIsAlive(false);
-                SoundManager.playMusic("/power.mp3");
+                SoundManager.playPowerSound();
             }
         }
     }

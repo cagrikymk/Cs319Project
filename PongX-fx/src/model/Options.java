@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.SoundManager;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -95,6 +96,10 @@ public class Options {
 
     public void setIsSoundEnabled(boolean isSoundEnabled) {
         this.isSoundEnabled = isSoundEnabled;
+        if(this.isSoundEnabled == false)
+            SoundManager.getMediaPlayer().setVolume(0);
+        else
+            SoundManager.getMediaPlayer().setVolume(10);
     }
 
     public String[] getP1Keys() {
