@@ -24,12 +24,13 @@ public class Ball extends GameObject {
     
 
     public double getRadius() {
-        return radius;
+        return ((Circle)getShape()).getRadius();
     }
 
 
     public void setRadius(int size) {
         this.radius = size;
+        ((Circle)getShape()).setRadius(size);
     }
 
     public void setLastHit(int i){
@@ -43,7 +44,6 @@ public class Ball extends GameObject {
     
     public void changeSize (int r) {
         setRadius(r);
-        ((Circle)getShape()).setRadius(r);
     }
     
     public void intialThrowBall(int x, int y){

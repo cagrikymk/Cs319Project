@@ -5,6 +5,8 @@
  */
 package model;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Shape;
 
 /**
@@ -15,6 +17,8 @@ public class RegularBrick extends Brick {
 
     public RegularBrick(int axisX, int axisY) {
         super(axisX, axisY);
+        setTexture((new ImageView(new Image(getClass().getResourceAsStream("/bricks/RegularBrick.png"), getWidth(), getHeight(), false, true))));
+        setLife(1);
     }
     
 }

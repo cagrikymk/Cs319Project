@@ -30,7 +30,7 @@ public class StickNegativePower extends Power{
     }
 
     public void reduceStick(Stick s){
-       if ( this.isIsAlive() ){
+       if ( this.isAlive() ){
            s.changeSize(s.getWidth() , s.getHeight() - reduceHeight);
            
        }

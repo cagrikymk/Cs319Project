@@ -33,7 +33,7 @@ public class StickPositivePower extends Power{
     }
     
    public void enlargeStick(Stick s){
-       if ( this.isIsAlive() ){
+       if ( this.isAlive() ){
            s.changeSize(s.getWidth(), s.getHeight() +enlargeHeight);
            System.out.println("+25 of " + s);
        }   

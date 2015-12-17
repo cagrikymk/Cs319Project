@@ -5,6 +5,8 @@
  */
 package model;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Shape;
 
 /**
@@ -12,18 +14,11 @@ import javafx.scene.shape.Shape;
  * @author cagrikaymak
  */
 public class StrongBrick extends Brick {
-    private int extraLife;
 
     public StrongBrick(int axisX, int axisY) {
         super(axisX, axisY);
+        setTexture((new ImageView(new Image(getClass().getResourceAsStream("/bricks/StrongBrick.png"), getWidth(), getHeight(), false, true))));
+        setLife(5);
     }
 
-    public int getExtraLife() {
-        return extraLife;
-    }
-
-    public void setExtraLife(int extraLife) {
-        this.extraLife = extraLife;
-    }
-    
 }

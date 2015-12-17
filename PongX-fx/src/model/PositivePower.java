@@ -32,7 +32,7 @@ public class PositivePower extends Power{
 
    
    public void getPower(Ball b1 ){
-       if ( this.isIsAlive() ){
+       if ( this.isAlive() ){
            Point p1 = b1.getVelocityVector();
            if ( Math.abs(p1.x) < 14){
                p1.x += p1.x / speedUp;

@@ -34,7 +34,7 @@ public class NegativePower extends Power {
     }
 
     public void getPower(Ball b1) {
-        if (this.isIsAlive()) {
+        if (this.isAlive()) {
             Point p1 = b1.getVelocityVector();
             System.out.println("Vel Vec before slowDown " + p1);
             if (Math.abs(p1.x) > 5) {

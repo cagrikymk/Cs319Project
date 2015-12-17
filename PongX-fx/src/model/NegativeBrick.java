@@ -5,6 +5,8 @@
  */
 package model;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Shape;
 
 /**
@@ -16,6 +18,9 @@ public class NegativeBrick extends Brick{
 
     public NegativeBrick(int axisX, int axisY) {
         super(axisX, axisY);
+        setTexture((new ImageView(new Image(getClass().getResourceAsStream("/bricks/NegativeBrick.png"), getWidth(), getHeight(), false, true))));
+        setLife(2);
+        
     }
 
     public int getSpeedDown() {
@@ -26,5 +31,8 @@ public class NegativeBrick extends Brick{
         this.speedDown = speedDown;
     }
     
-    
+    public void speedDownBall(Ball b){
+        getVelocityVector().x = getVelocityVector().x - speedDown;
+        getVelocityVector().y = getVelocityVector().y - speedDown;
+    }
 }

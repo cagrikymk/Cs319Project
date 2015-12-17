@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.GameFieldManager;
 import java.awt.Point;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
@@ -31,7 +32,8 @@ public class GameField {
         this.friction = friction;
         this.imageURL = imageURL;
         players = sticks;
-        activeField = new Rectangle(181, 84, 1000, 600);  
+        activeField = new Rectangle(GameFieldManager.MAP_WIDTH_OFFSET, GameFieldManager.MAP_HEIGHT_OFFSET, 
+                GameFieldManager.MAP_WIDTH, GameFieldManager.MAP_HEIGHT);  
     }
     
     public void initializeGameField() {

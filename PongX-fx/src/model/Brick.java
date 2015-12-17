@@ -9,23 +9,29 @@ package model;
  *
  * @author cagrikaymak
  */
+import java.awt.Point;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 public class Brick extends GameObject {
-    Image texture;
-    int life;
+    private ImageView texture;
+    private int life;
 
     public Brick(int axisX, int axisY) {
         super(axisX, axisY, new Rectangle(axisX, axisY, 20, 150));
     }
 
-    public Image getTexture() {
+    public ImageView getTexture() {
         return texture;
     }
 
     public int getLife() {
         return life;
+    }
+    
+    public void decreaseLife() {
+        setLife(getLife() - 1);
     }
 
     public double getHeight() {
@@ -36,16 +42,22 @@ public class Brick extends GameObject {
         return ((Rectangle)getShape()).getWidth();
     }
 
-    public void setTexture(Image texture) {
+    public void setTexture(ImageView texture) {
         this.texture = texture;
     }
+    @Override
+    public void setLocation(Point point) {
+        super.setLocation(point);
+        texture.setLayoutX(point.x);
+        texture.setLayoutX(point.y);     
+    }
+    
 
     public void setLife(int life) {
-        this.life = life;
         
         if (life <= 0) {
            setIsAlive(false);
-           life = 0; // life cannot smaller than 0
+           this.life = 0; // life cannot smaller than 0
         }
             
     }
@@ -58,10 +70,4 @@ public class Brick extends GameObject {
         ((Rectangle)getShape()).setHeight(width);
     }
  
-    public boolean isAlive (){
-        if (life == 0)
-            return false;
-        else
-            return true;
-    }
 }

@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.awt.Point;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Shape;
 
 /**
@@ -12,10 +15,12 @@ import javafx.scene.shape.Shape;
  * @author cagrikaymak
  */
 public class FastBrick extends Brick {
-    private double speedUP;
+    private int speedUP;
 
     public FastBrick(int axisX, int axisY) {
         super(axisX, axisY);
+        setTexture(new ImageView(new Image(getClass().getResourceAsStream("/bricks/FastBrick.png"), getWidth(), getHeight(), false, true)));
+        setLife(2);
     }
 
 
@@ -27,6 +32,7 @@ public class FastBrick extends Brick {
         this.speedUP = speedUP;
     }
     public void speedUpBall(Ball b){
-        
+        getVelocityVector().x = getVelocityVector().x + speedUP;
+        getVelocityVector().y = getVelocityVector().y + speedUP;
     }
 }

@@ -25,6 +25,7 @@ import model.RegularBrick;
 import model.StickNegativePower;
 import model.StickPositivePower;
 import model.StrongBrick;
+import view.GameRendererPane;
 
 /**
  *
@@ -35,7 +36,7 @@ public class GameManager implements Runnable {
     private GameState gameState;
     private Options options;
     private GameFieldManager gameFieldManager;
-
+    private GameRendererPane renderer;
     private static GameManager gameManagerInstance; // SİNGLETON PATTERN
 
     private AnimationTimer timer;
@@ -70,7 +71,9 @@ public class GameManager implements Runnable {
     }
 
     public void update() {
-
+         getGameFieldManager().updateGameField();
+         renderer.update();
+         
     }
 
     // prepare thread
@@ -82,7 +85,7 @@ public class GameManager implements Runnable {
             // this method will called 60 times per sec
             @Override
             public void handle(long now) {
-                getGameFieldManager().updateGameField();
+                update();
             }
 
         };
@@ -161,11 +164,11 @@ public class GameManager implements Runnable {
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     String arr[] = line.split(" ");
-                    if (arr[0] == "NegativeBrick") {
+                    if (arr[0].equals("NegativeBrick")) {
                         bricks.add(new NegativeBrick(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
-                    } else if (arr[0] == "FastBrick") {
+                    } else if (arr[0].equals("FastBrick")) {
                         bricks.add(new FastBrick(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
-                    } else if (arr[0] == "StrongBrick") {
+                    } else if (arr[0].equals("StrongBrick")) {
                         bricks.add(new StrongBrick(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
                     } else {
                         bricks.add(new RegularBrick(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
@@ -181,6 +184,16 @@ public class GameManager implements Runnable {
         }
 
     }
+
+    public GameRendererPane getRenderer() {
+        return renderer;
+    }
+
+    public void setRenderer(GameRendererPane renderer) {
+        this.renderer = renderer;
+    }
+    
+    
 
     private ArrayList<Power> getPowerFromFile() throws FileNotFoundException, IOException {
           

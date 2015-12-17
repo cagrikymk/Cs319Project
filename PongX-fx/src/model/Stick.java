@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.GameFieldManager;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
@@ -50,6 +51,19 @@ public class Stick extends GameObject{
     }
     
     public void applyPower(int pwrID){
+        
+    }
+      @Override
+      public void setLocation(int x, int y) {
+        if (x >= GameFieldManager.MAP_WIDTH_OFFSET
+                && x <= GameFieldManager.MAP_WIDTH_OFFSET + GameFieldManager.MAP_WIDTH
+                && y >= GameFieldManager.MAP_HEIGHT_OFFSET
+                && y + getHeight() <= GameFieldManager.MAP_HEIGHT_OFFSET + GameFieldManager.MAP_HEIGHT) {
+             getLocation().x = x;
+             getLocation().y = y;
+            getShape().setLayoutX( getLocation().getX());
+            getShape().setLayoutY( getLocation().getY());
+        }
         
     }
 
