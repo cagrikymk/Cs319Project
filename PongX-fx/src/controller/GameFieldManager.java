@@ -13,7 +13,11 @@ import model.Power;
 import model.Ball;
 import model.Brick;
 import model.GameField;
+import model.NegativePower;
 import model.Options;
+import model.PositivePower;
+import model.StickNegativePower;
+import model.StickPositivePower;
 
 /**
  *
@@ -30,12 +34,12 @@ public class GameFieldManager {
     private int player2Score = 0;
     private InputManager inputManager;
 
-    public GameFieldManager(double friction, ArrayList<Brick> brickSet, boolean isSingleplayer, String imageURL) {
+    public GameFieldManager(double friction, ArrayList<Brick> brickSet, ArrayList<Power> powers, boolean isSingleplayer, String imageURL) {
         Stick sticks[] = new Stick[2];
         sticks[0] = new Stick(200, MAP_HEIGHT/2 + 40, new Rectangle(20, 100));
         sticks[1] = new Stick(MAP_WIDTH + 100, MAP_HEIGHT/2 + 40, new Rectangle(20, 100));
         
-        gameField = new GameField(new Ball(10, 0, 0), brickSet, sticks, friction, imageURL);
+        gameField = new GameField(new Ball(10, 0, 0), brickSet, powers, sticks, friction, imageURL);
         this.imageURL = imageURL;
         this.isSingleplayer = isSingleplayer;
         inputManager = new InputManager(Options.getInstance().getP1Keys(), Options.getInstance().getP2Keys(), gameField.getPlayers()[0]);
@@ -57,6 +61,7 @@ public class GameFieldManager {
         detectBorderCollision();
         detectBrickBallCollision();
         detectStickBallCollision();
+        detectPowerBallCollision();
         gameField.update();
     }
     
@@ -98,21 +103,44 @@ public class GameFieldManager {
                         (s1.getAxisY()) <= (ball.getAxisY() - ball.getRadius())){
                     impact = true;
                     ball.reflectBall(Ball.ImpactLocation.TOP);
+                    if ( s1 == gameField.getPlayer(0) ){
+                        ball.setLastHit(0);
+                        System.out.println("BALL HIT P1");
+                    }
+                        else
+                        ball.setLastHit(1);
                 }
                 else if (s1.getAxisY() <= ball.getAxisY() + ball.getRadius() &&  s1.getAxisY() >= ball.getAxisY() - ball.getRadius()){
                     ball.reflectBall(Ball.ImpactLocation.BOTTOM);
                     impact = true;
-
+                    if ( s1 == gameField.getPlayer(0) ){
+                        ball.setLastHit(0);
+                        System.out.println("BALL HIT P1");
+                    }
+                    else
+                        ball.setLastHit(1);
                 }  
             }
             else if (s1.getAxisY() <= ball.getAxisY() && ball.getAxisY() <= s1.getAxisY() + s1.getHeight() && !impact){
                 if (s1.getAxisX() <= ball.getAxisX() - ball.getRadius() && 
                         s1.getAxisX() + s1.getWidth() >= ball.getAxisX() - ball.getRadius()){
                     ball.reflectBall(Ball.ImpactLocation.LEFT);
+                    if ( s1 == gameField.getPlayer(0) ){
+                        ball.setLastHit(0);
+                        System.out.println("BALL HIT P1");
+                    }
+                    else
+                        ball.setLastHit(1);
                 }
                 else if (s1.getAxisX() + s1.getWidth() >= ball.getAxisX() + ball.getRadius() && 
                         s1.getAxisX() <= ball.getAxisX() + ball.getRadius() ){
                     ball.reflectBall(Ball.ImpactLocation.RIGHT);
+                    if ( s1 == gameField.getPlayer(0) ){
+                        ball.setLastHit(0);
+                        System.out.println("BALL HIT P1");
+                    }
+                    else
+                        ball.setLastHit(1);
                 } 
             }
         }
@@ -120,10 +148,29 @@ public class GameFieldManager {
     
     public void detectPowerBallCollision() {
         for ( Power p1 : gameField.getPowers()){
-            Shape s1 = Shape.intersect(gameField.getBall().getShape(), p1.getShape());
-            if ( s1 != null){
-                //Use power on Ball or Stick
-               // p1.setVisible(false);
+            //Shape s1 = Shape.intersect(gameField.getBall().getShape(), p1.getShape());
+            if (p1.getShape().intersects(gameField.getBall().getShape().getBoundsInParent()) ){
+            //if ( s1 != null){
+                if ( p1.getPowerID() == 0){
+                    ((NegativePower)p1).getPower(gameField.getBall());
+                }
+                else if ( p1.getPowerID() == 1){
+                    ((PositivePower)p1).getPower(gameField.getBall());
+                }
+                else if ( p1.getPowerID() == 2){
+                    if ( gameField.getBall().getLastHit() == 0)
+                        ((StickNegativePower)p1).reduceStick( gameField.getPlayer(0));
+                    else
+                        ((StickNegativePower)p1).reduceStick( gameField.getPlayer(1));
+                }
+                else if ( p1.getPowerID() == 3){
+                    if ( gameField.getBall().getLastHit() == 0){
+                        ((StickPositivePower)p1).enlargeStick( gameField.getPlayer(0));
+                    }
+                    else
+                        ((StickPositivePower)p1).enlargeStick( gameField.getPlayer(1));
+                }
+                p1.setIsAlive(false);
             }
         }
     }

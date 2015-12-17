@@ -14,10 +14,12 @@ import javafx.scene.shape.Circle;
 public class Ball extends GameObject {
     
     private int radius;
+    private int lastHit;
 
     public Ball(int radius, int x, int y) {
         super(x, y, new Circle(x, y, radius));
         this.radius = radius;
+        this.lastHit = -1;
     }
     
 
@@ -30,8 +32,13 @@ public class Ball extends GameObject {
         this.radius = size;
     }
 
-
+    public void setLastHit(int i){
+        this.lastHit = i;
+    }
     
+    public int getLastHit(){
+        return this.lastHit;
+    }
     
     
     public void changeSize (int r) {

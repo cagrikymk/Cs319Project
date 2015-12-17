@@ -1,0 +1,4 @@
+PositiveBall 225 225
+NegativeBall 380 450
+PositiveStick 625 550
+NegativeStick 865 225

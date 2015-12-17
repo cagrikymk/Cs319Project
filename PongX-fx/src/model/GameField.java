@@ -24,9 +24,10 @@ public class GameField {
     private Rectangle activeField;
     private Stick players[];
 
-    public GameField( Ball ball, ArrayList<Brick> bricks, Stick sticks[], double friction, String imageURL) {
+    public GameField( Ball ball, ArrayList<Brick> bricks, ArrayList<Power> powers, Stick sticks[], double friction, String imageURL) {
         this.ball = ball;
         this.bricks = bricks;
+        this.powers = powers;
         this.friction = friction;
         this.imageURL = imageURL;
         players = sticks;
@@ -81,6 +82,12 @@ public class GameField {
 
     public Stick[] getPlayers() {
         return players;
+    }
+    
+    public Stick getPlayer(int i){
+        if ( players[i] != null )
+            return players[i];
+        return null;
     }
 
     public void setPlayers(Stick[] players) {

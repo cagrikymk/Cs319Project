@@ -14,11 +14,11 @@ import javafx.scene.shape.Shape;
  */
 public class StickPositivePower extends Power{
     
-    private double enlargeHeight = 18;
+    private double enlargeHeight = 25;
     
-
-    public StickPositivePower(int axisX, int axisY, Shape shape) {
-        super(axisX, axisY, shape);
+    public StickPositivePower(int x, int y) {
+        super(x,y);
+        super.setPowerID(3);
     }
 
     public double getEnlargeHeight() {
@@ -30,6 +30,9 @@ public class StickPositivePower extends Power{
     }
     
    public void enlargeStick(Stick s){
-       s.changeSize(s.getWidth(), s.getHeight()+enlargeHeight);
+       if ( this.isIsAlive() ){
+           s.changeSize(s.getWidth(), s.getHeight() +enlargeHeight);
+           System.out.println("+25 of " + s);
+       }   
    }
 }

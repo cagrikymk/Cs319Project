@@ -170,11 +170,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="pongXLabel">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/PONG-X.png"/>
-                </Property>
-              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="160" y="40" width="-1" height="-1"/>
@@ -465,18 +460,8 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel1">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Options.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Enable-Sounds (1).png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JToggleButton" name="soundsToggleButton1">
               <Properties>
@@ -484,11 +469,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="moveUp1Label">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Move-Up.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="p1UpTextField">
               <Properties>
@@ -503,11 +483,6 @@
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="moveUp2Label">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Move-Up.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="p2UpTextField">
               <Properties>
@@ -522,18 +497,8 @@
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Move-Down.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Move-Down.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="p1DownTextField">
               <Properties>
@@ -560,18 +525,8 @@
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/P1.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/P2.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="optionsReturn">
               <Properties>

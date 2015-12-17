@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import model.Brick;
 import model.GameField;
+import model.Power;
 import model.Stick;
 
 /**
@@ -47,6 +48,10 @@ public class GameRendererPane extends Pane {
          for(Stick stick: gameField.getPlayers()) {
             getChildren().addAll(stick.getShape());
         }
+         
+         for (Power power: gameField.getPowers()){
+             getChildren().addAll(power.getShape());
+         }
          
         getChildren().addAll(gameField.getBall().getShape());
     }

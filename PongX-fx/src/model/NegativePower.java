@@ -17,8 +17,8 @@ public class NegativePower extends Power{
     private double shrinkHeight;
     private double shrinkWidht;
 
-    public NegativePower(int axisX, int axisY, Shape shape) {
-        super(axisX, axisY, shape);
+    public NegativePower(int x, int y) {
+        super(x,y);
         super.setPowerID(0);
     }
 
@@ -32,10 +32,11 @@ public class NegativePower extends Power{
     
     
     public void getPower(Ball b1 ){
-       Point p1 = b1.getVelocityVector();
-       p1.x -= p1.x/ slowDown;
-       p1.y -= p1.y/ slowDown;
-       b1.setVelocityVector( p1 );
-   }
-   
+       if ( this.isIsAlive() ){
+           Point p1 = b1.getVelocityVector();
+           p1.x -= p1.x / slowDown;
+           p1.y -= p1.y / slowDown;
+           b1.setVelocityVector(p1);
+       }
+    }
 }
