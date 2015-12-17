@@ -38,6 +38,9 @@ public class GameManager implements Runnable {
     private GameFieldManager gameFieldManager;
     private GameRendererPane renderer;
     private static GameManager gameManagerInstance; // SİNGLETON PATTERN
+    public static final int WIDTH = 1366;
+    public static final int HEIGHT = 768;
+    
 
     private AnimationTimer timer;
 
@@ -63,7 +66,7 @@ public class GameManager implements Runnable {
                 System.err.println("bricks couldnt load");
             }
             this.options = options;
-            gameState = GameState.BEFORESTART;
+            gameState = GameState.RUNNING;
         } else {
             System.err.println("No instance of game manager");
         }
@@ -71,7 +74,8 @@ public class GameManager implements Runnable {
     }
 
     public void update() {
-         getGameFieldManager().updateGameField();
+        if(gameState == GameState.RUNNING)
+            getGameFieldManager().updateGameField();
          renderer.update();
          
     }
@@ -94,7 +98,6 @@ public class GameManager implements Runnable {
     public void pauseGame() {
         if (gameState == GameState.RUNNING) {
             gameState = GameState.PAUSE;
-            stop();
         } else {
             System.err.println("game is already running");
         }
@@ -103,7 +106,6 @@ public class GameManager implements Runnable {
     public void resumeGame() {
         if (gameState == GameState.PAUSE) {
             gameState = GameState.RUNNING;
-            run();
 
         } else {
             System.err.println("game is not paused so cant be resumed");
@@ -146,7 +148,7 @@ public class GameManager implements Runnable {
     private ArrayList<Brick> getBrickFromFile(String brickSet) throws FileNotFoundException, IOException {
 
         if (brickSet == "Empty brick set") {
-            return new ArrayList<>(0);
+            return new ArrayList<Brick>(0);
         } else {
             BufferedReader bufferedReader = null;
             String fileLoc = null;

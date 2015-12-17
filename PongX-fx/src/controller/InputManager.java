@@ -48,6 +48,13 @@ public class InputManager implements EventHandler<KeyEvent> {
                     keys[3] = true;
                 }
             }
+            
+            if(event.getText().equalsIgnoreCase("p")) {
+                if(GameManager.getInstance().getGameState() == GameManager.GameState.RUNNING)
+                    GameManager.getInstance().pauseGame();
+                else
+                    GameManager.getInstance().resumeGame();
+            }
         }
         else if (event.getEventType() == KeyEvent.KEY_RELEASED) {
             if (event.getText().equalsIgnoreCase(p1Keys[0])) {
@@ -66,6 +73,7 @@ public class InputManager implements EventHandler<KeyEvent> {
                 }
             }
         }
+        
 
         if (keys[0] == true) {
             p1.setLocation(p1.getAxisX(), p1.getAxisY() - 10);

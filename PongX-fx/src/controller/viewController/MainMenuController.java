@@ -5,7 +5,6 @@
  */
 package controller.viewController;
 
-import controller.PlayGameMenuController;
 import controller.ScreenManager;
 import javafx.scene.layout.Pane;
 import mainPackage.MainClass;

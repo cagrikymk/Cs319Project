@@ -43,10 +43,11 @@ public class MultiplayerPaneController {
             GameManager.getInstance().init(Options.getInstance(), multiplayerPane.getFriction(), brickSet, false, multiplayerPane.getSelectedImageURL());
             
             GameRendererPane renderer = new GameRendererPane();
-        GameManager.getInstance().setRenderer(renderer);
+            GameRendererController rendererController = new GameRendererController(renderer);
+            GameManager.getInstance().setRenderer(renderer);
             ScreenManager.changeSceneRoot(multiplayerPane, renderer);
             GameManager.getInstance().startGame();
-        });
+        }); 
 
     }
 }
