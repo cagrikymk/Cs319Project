@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/NegativePower.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/Ball.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/PositivePower.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/GameObject.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/controller/GameManager.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/StickPositivePower.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/StickNegativePower.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/controller/GameFieldManager.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/NegativeBrick.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/GameField.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/Cs319Project/PongX-fx/src/model/Power.java</file>
+        </group>
     </open-files>
 </project-private>

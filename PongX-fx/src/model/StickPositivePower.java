@@ -6,6 +6,8 @@
 package model;
 
 import java.awt.Point;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
 
 /**
@@ -14,11 +16,12 @@ import javafx.scene.shape.Shape;
  */
 public class StickPositivePower extends Power{
     
-    private double enlargeHeight = 25;
+    private double enlargeHeight = 35;
     
     public StickPositivePower(int x, int y) {
         super(x,y);
         super.setPowerID(3);
+        super.getShape().setFill(Color.BLUE);
     }
 
     public double getEnlargeHeight() {

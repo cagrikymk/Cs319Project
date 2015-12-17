@@ -183,10 +183,11 @@ public class GameManager implements Runnable {
     }
 
     private ArrayList<Power> getPowerFromFile() throws FileNotFoundException, IOException {
+          
+        ArrayList<Power> powers = new ArrayList<Power>();
 
 //        BufferedReader bufferedReader = null;
 //        String fileLoc = null;
-          ArrayList<Power> powers = new ArrayList<Power>();
 //        try {
 //            fileLoc = "options/powers.txt";
 //            bufferedReader = new BufferedReader(new FileReader(fileLoc));
@@ -196,17 +197,21 @@ public class GameManager implements Runnable {
 //                String arr[] = line.split(" ");
 //                System.out.println(arr[0]);
 //                if (arr[0] == "PositiveBall") {
-//                    powers.add(new PositivePower(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
+//                    PositivePower ballPositive = new PositivePower(Integer.valueOf(arr[1]), Integer.valueOf(arr[2]));
+//                    powers.add(ballPositive);
 //                    System.out.println("PositiveBall added");
 //                } else if (arr[0] == "NegativeBall") {
-//                    powers.add(new NegativePower(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
+//                    NegativePower ballNegative = new NegativePower(Integer.valueOf(arr[1]), Integer.valueOf(arr[2]));
+//                    powers.add(ballNegative);                    
 //                    System.out.println("NegativeBall added");
 //                } else if (arr[0] == "PositiveStick") {
 //                    System.out.println("StickPositive added");
-//                    powers.add(new StickPositivePower(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
+//                    StickPositivePower stickPositive = new StickPositivePower(Integer.valueOf(arr[1]), Integer.valueOf(arr[2]));
+//                    powers.add(stickPositive);                    
 //                } else if (arr[0] == "NegativeStick") { //Negative Stick
 //                    System.out.println("StickNegative added");
-//                    powers.add(new StickNegativePower(Integer.valueOf(arr[1]), Integer.valueOf(arr[2])));
+//                    StickNegativePower stickNegative = new StickNegativePower(Integer.valueOf(arr[1]), Integer.valueOf(arr[2]));
+//                    powers.add(stickNegative);                    
 //                }
 //            }
 //        } finally {
@@ -220,7 +225,12 @@ public class GameManager implements Runnable {
         powers.add(spp);
         StickNegativePower snp = new StickNegativePower(550, 250);
         powers.add(snp);
-        System.out.println(powers);
+        NegativePower pp = new NegativePower(200,200);
+        powers.add(pp);
+        pp = new NegativePower(300,300);
+        powers.add(pp);
+        pp = new NegativePower(400,400);
+        powers.add(pp);
             
         return powers;
     }

@@ -6,6 +6,7 @@
 package model;
 
 import java.awt.Point;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
 /**
@@ -13,11 +14,12 @@ import javafx.scene.shape.Shape;
  * @author fatih
  */
 public class StickNegativePower extends Power{
-    private double reduceHeight = 9;
+    private double reduceHeight = 15;
 
     public StickNegativePower(int x, int y) {
         super(x,y);
         super.setPowerID(2);
+        super.getShape().setFill(Color.RED);
     }
 
     public double getReduceHeight() {

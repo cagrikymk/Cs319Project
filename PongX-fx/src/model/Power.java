@@ -15,7 +15,7 @@ public class Power extends GameObject {
     
 
     public Power(int x, int y) {
-        super(x, y, new Circle(x, y, 30));
+        super(x, y, new Circle(x, y, 22));
         
     }
 
