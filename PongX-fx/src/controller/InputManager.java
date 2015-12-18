@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.awt.Point;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -79,9 +80,12 @@ public class InputManager implements EventHandler<KeyEvent> {
 
         if (GameManager.getInstance().getGameState() == GameManager.GameState.RUNNING) {
             if (keys[0] == true) {
+                //p1.setVelocityVector(new Point(0, -4));
                 p1.setLocation(p1.getAxisX(), p1.getAxisY() - 10);
             }
+            
             if (keys[1] == true) {
+                //p1.setVelocityVector(new Point(0, 4));
                 p1.setLocation(p1.getAxisX(), p1.getAxisY() + 10);
             }
             if (keys[2] == true) {

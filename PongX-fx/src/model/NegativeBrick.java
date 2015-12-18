@@ -14,25 +14,16 @@ import javafx.scene.shape.Shape;
  * @author cagrikaymak
  */
 public class NegativeBrick extends Brick{
-    int speedDown;
 
     public NegativeBrick(int axisX, int axisY) {
-        super(axisX, axisY);
+        super(axisX, axisY, 2);
         setTexture((new ImageView(new Image(getClass().getResourceAsStream("/bricks/NegativeBrick.png"), getWidth(), getHeight(), false, true))));
-        setLife(2);
+        setBallPower(new SlowDownBallPower());
         
     }
 
-    public int getSpeedDown() {
-        return speedDown;
-    }
-
-    public void setSpeedDown(int speedDown) {
-        this.speedDown = speedDown;
-    }
-    
-    public void speedDownBall(Ball b){
-        getVelocityVector().x = getVelocityVector().x - speedDown;
-        getVelocityVector().y = getVelocityVector().y - speedDown;
+    @Override
+    public void applyBallPowers(Ball b) {
+        getBallPower().applyBallPower(b);
     }
 }

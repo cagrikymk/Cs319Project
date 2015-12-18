@@ -99,19 +99,12 @@ public class GameField {
         this.players = players;
     }
     
-    
-
-   
-    public void addObject(GameObject object){
-        
-    }
-    public void removeObject(GameObject object){
-        
-    }
+ 
     public void loadBricks(ArrayList<Brick> Bricks){
         
     }
 
+    
     public void update() {
         // update all game objects which are still alive
         ball.uptade();

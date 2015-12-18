@@ -16,9 +16,13 @@ import javafx.scene.shape.Shape;
 public class StrongBrick extends Brick {
 
     public StrongBrick(int axisX, int axisY) {
-        super(axisX, axisY);
+        super(axisX, axisY, 5);
         setTexture((new ImageView(new Image(getClass().getResourceAsStream("/bricks/StrongBrick.png"), getWidth(), getHeight(), false, true))));
-        setLife(5);
+    }
+
+    @Override
+    public void applyBallPowers(Ball b) {
+        
     }
 
 }

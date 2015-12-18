@@ -14,12 +14,20 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-public abstract class Brick extends GameObject {
+public abstract class Brick extends GameObject  {
     private ImageView texture;
     private int life;
+    private BallPower ballPower; // bridge
 
-    public Brick(int axisX, int axisY) {
+    public Brick(int axisX, int axisY, int life) {
         super(axisX, axisY, new Rectangle(axisX, axisY, 20, 150));
+        this.life = life;
+    }
+    
+    public void applyBallPowers(Ball b) {
+        if(ballPower != null) {
+            applyBallPowers(b);
+        }
     }
 
     public ImageView getTexture() {
@@ -31,7 +39,9 @@ public abstract class Brick extends GameObject {
     }
     
     public void decreaseLife() {
-        setLife(getLife() - 1);
+        life--;
+        if(life <= 0)
+            setIsAlive(false);
     }
 
     public double getHeight() {
@@ -69,5 +79,15 @@ public abstract class Brick extends GameObject {
     public void setWidth(double width) {
         ((Rectangle)getShape()).setHeight(width);
     }
+
+    public BallPower getBallPower() {
+        return ballPower;
+    }
+
+    public void setBallPower(BallPower ballPower) {
+        this.ballPower = ballPower;
+    }
+    
+    
  
 }

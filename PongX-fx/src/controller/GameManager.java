@@ -48,6 +48,7 @@ public class GameManager implements Runnable {
     private AnimationTimer timer;
     
     private String winner;
+    
 
     private GameManager() {
 

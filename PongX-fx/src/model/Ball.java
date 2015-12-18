@@ -19,7 +19,7 @@ public class Ball extends GameObject {
     public Ball(int radius, int x, int y) {
         super(x, y, new Circle(x, y, radius));
         this.radius = radius;
-        this.lastHit = -1;
+        this.lastHit = -1;        
     }
     
 

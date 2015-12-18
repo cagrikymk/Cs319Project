@@ -15,24 +15,17 @@ import javafx.scene.shape.Shape;
  * @author cagrikaymak
  */
 public class FastBrick extends Brick {
-    private int speedUP;
+    
 
     public FastBrick(int axisX, int axisY) {
-        super(axisX, axisY);
+        super(axisX, axisY, 2);
         setTexture(new ImageView(new Image(getClass().getResourceAsStream("/bricks/FastBrick.png"), getWidth(), getHeight(), false, true)));
-        setLife(2);
+        setBallPower(new SpeedUpBalPower());
     }
 
 
-    public double getSpeedUP() {
-        return speedUP;
-    }
-
-    public void setSpeedUP(int speedUP) {
-        this.speedUP = speedUP;
-    }
-    public void speedUpBall(Ball b){
-        getVelocityVector().x = getVelocityVector().x + speedUP;
-        getVelocityVector().y = getVelocityVector().y + speedUP;
+    @Override
+    public void applyBallPowers(Ball b) {
+        getBallPower().applyBallPower(b);
     }
 }

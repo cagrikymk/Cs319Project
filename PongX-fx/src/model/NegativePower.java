@@ -15,7 +15,6 @@ import javafx.scene.shape.Shape;
  */
 public class NegativePower extends Power {
 
-    private double slowDown = 3;
     private double shrinkHeight;
     private double shrinkWidht;
 
@@ -23,26 +22,13 @@ public class NegativePower extends Power {
         super(x, y);
         super.setPowerID(0);
         super.getShape().setFill(Color.CORAL);
+        setBallPower(new SlowDownBallPower());
     }
 
-    public double getSlowDown() {
-        return slowDown;
-    }
-
-    public void setSlowDown(double slowDown) {
-        this.slowDown = slowDown;
-    }
 
     public void getPower(Ball b1) {
         if (this.isAlive()) {
-            Point p1 = b1.getVelocityVector();
-            System.out.println("Vel Vec before slowDown " + p1);
-            if (Math.abs(p1.x) > 5) {
-                p1.x -= p1.x / slowDown;
-                p1.y -= p1.y / slowDown;
-                b1.setVelocityVector(p1);
-                System.out.println("Vel Vec after slowDown " + p1);
-            }
+            getBallPower().applyBallPower(b1);
         }
     }
 }

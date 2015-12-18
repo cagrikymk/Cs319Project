@@ -16,9 +16,12 @@ import javafx.scene.shape.Shape;
 public class RegularBrick extends Brick {
 
     public RegularBrick(int axisX, int axisY) {
-        super(axisX, axisY);
+        super(axisX, axisY, 1);
         setTexture((new ImageView(new Image(getClass().getResourceAsStream("/bricks/RegularBrick.png"), getWidth(), getHeight(), false, true))));
-        setLife(1);
+    }
+
+    @Override
+    public void applyBallPowers(Ball b) {
     }
     
 }
