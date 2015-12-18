@@ -99,6 +99,7 @@ public class SingleplayerPane extends Pane {
         AILabel.getStyleClass().add("font");
         
         AILevelComboBox = new ComboBox<Integer>(AIList);
+        AILevelComboBox.setValue(1);
         AILevelComboBox.setMinWidth(100);
         
         
@@ -239,7 +240,14 @@ public class SingleplayerPane extends Pane {
     }
     
     
-
+     public double getFriction() {
+        System.out.println("GET FRICTION FROM MULTIPLAYERPANE " + frictionSpinner.getNumber().doubleValue());
+        return frictionSpinner.getNumber().doubleValue();
+    }
+     
+     public String getSelectedImageURL() {
+        return imageURL[imageIndex];
+    }
 
     public Pane getFieldImagePane() {
         return fieldImagePane;

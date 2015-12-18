@@ -48,9 +48,16 @@ public class GameRendererController {
         });
         
          pauseMenu.getResumeButton().setOnAction(e -> {
-             
-           GameManager.getInstance().setGameState(GameManager.GameState.RUNNING);
-            rendererPane.getPauseButton().setText("Pause");
+            if(GameManager.getInstance().getGameState() == GameManager.GameState.GAMEOVER) {
+               GameManager.getInstance().restartGame();
+               rendererPane.restartRenderer();
+               pauseMenu.getResumeButton().setText("Resume");
+            }
+            else {
+               GameManager.getInstance().setGameState(GameManager.GameState.RUNNING);
+                rendererPane.getPauseButton().setText("Pause"); 
+            }
+           
             
             
         });

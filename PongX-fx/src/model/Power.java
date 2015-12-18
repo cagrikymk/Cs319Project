@@ -10,7 +10,7 @@ import javafx.scene.shape.Circle;
  *
  * @author cagrikaymak
  */
-public class Power extends GameObject {
+public abstract class Power extends GameObject {
     private int powerID; // NegativePower=0, PositivePower=1, StickNegativePower=2, StickPositivePower=3
     
 

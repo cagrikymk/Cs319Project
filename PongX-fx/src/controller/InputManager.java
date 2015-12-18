@@ -21,6 +21,7 @@ public class InputManager implements EventHandler<KeyEvent> {
     private Stick p1;
     private Stick p2;
     private boolean keys[];
+
     public InputManager(String[] p1Keys, String[] p2Keys, Stick p1) {
         this.p1Keys = p1Keys;
         this.p2Keys = p2Keys;
@@ -30,13 +31,14 @@ public class InputManager implements EventHandler<KeyEvent> {
 
     @Override
     public void handle(KeyEvent event) {
-        
+
         if (event.getEventType() == KeyEvent.KEY_PRESSED) {
-            
+
             if (event.getText().equalsIgnoreCase(p1Keys[0])) {
                 keys[0] = true;
 
-            }  if (event.getText().equalsIgnoreCase(p1Keys[1])) {
+            }
+            if (event.getText().equalsIgnoreCase(p1Keys[1])) {
                 keys[1] = true;
             }
 
@@ -48,19 +50,20 @@ public class InputManager implements EventHandler<KeyEvent> {
                     keys[3] = true;
                 }
             }
-            
-            if(event.getText().equalsIgnoreCase("p")) {
-                if(GameManager.getInstance().getGameState() == GameManager.GameState.RUNNING)
+
+            if (event.getText().equalsIgnoreCase("p")) {
+                if (GameManager.getInstance().getGameState() == GameManager.GameState.RUNNING) {
                     GameManager.getInstance().pauseGame();
-                else
+                } else {
                     GameManager.getInstance().resumeGame();
+                }
             }
-        }
-        else if (event.getEventType() == KeyEvent.KEY_RELEASED) {
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED) {
             if (event.getText().equalsIgnoreCase(p1Keys[0])) {
                 keys[0] = false;
 
-            } if (event.getText().equalsIgnoreCase(p1Keys[1])) {
+            }
+            if (event.getText().equalsIgnoreCase(p1Keys[1])) {
                 keys[1] = false;
             }
 
@@ -73,19 +76,20 @@ public class InputManager implements EventHandler<KeyEvent> {
                 }
             }
         }
-        
 
-        if (keys[0] == true) {
-            p1.setLocation(p1.getAxisX(), p1.getAxisY() - 10);
-        }
-        if (keys[1] == true) {
-            p1.setLocation(p1.getAxisX(), p1.getAxisY() + 10);
-        }
-        if (keys[2] == true) {
-            p2.setLocation(p2.getAxisX(), p2.getAxisY() - 10);
-        }
-        if (keys[3] == true) {
-            p2.setLocation(p2.getAxisX(), p2.getAxisY() + 10);
+        if (GameManager.getInstance().getGameState() == GameManager.GameState.RUNNING) {
+            if (keys[0] == true) {
+                p1.setLocation(p1.getAxisX(), p1.getAxisY() - 10);
+            }
+            if (keys[1] == true) {
+                p1.setLocation(p1.getAxisX(), p1.getAxisY() + 10);
+            }
+            if (keys[2] == true) {
+                p2.setLocation(p2.getAxisX(), p2.getAxisY() - 10);
+            }
+            if (keys[3] == true) {
+                p2.setLocation(p2.getAxisX(), p2.getAxisY() + 10);
+            }
         }
 
     }

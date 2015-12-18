@@ -47,11 +47,19 @@ public class Ball extends GameObject {
     }
     
     public void intialThrowBall(int x, int y){
+        this.lastHit = -1;
         this.getLocation().setLocation(x, y);
-        double speedX = 7;
-        double speedY = 7;
+        double speedX = (Math.random() * 5) + 3;
+        double speedY = (Math.random() * 5) + 3;
         
-        getVelocityVector().setLocation(speedY, speedY);
+        if((int)(Math.random() * 11) > 5) {
+            speedX = -speedX;
+        }
+         if((int)(Math.random() * 11) > 5) {
+            speedY = -speedY;
+        }
+        
+        getVelocityVector().setLocation(speedX, speedY);
         
     }
      // top bottom reflect

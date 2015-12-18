@@ -14,7 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-public class Brick extends GameObject {
+public abstract class Brick extends GameObject {
     private ImageView texture;
     private int life;
 

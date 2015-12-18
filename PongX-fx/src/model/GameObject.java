@@ -14,7 +14,7 @@ import java.awt.Point;
 import javafx.scene.shape.Shape;
 import javafx.geometry.Point2D;
 
-public class GameObject {
+public abstract class GameObject {
 
     private Shape shape;
     private Point point;

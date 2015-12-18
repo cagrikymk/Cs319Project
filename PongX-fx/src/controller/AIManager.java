@@ -5,13 +5,29 @@
  */
 package controller;
 
+import model.Ball;
+import model.Stick;
+
 /**
  *
  * @author cagrikaymak
  */
 public class AIManager {
-//    if self.ball.y < self.player2.center_y:
-//    self.player2.center_y = self.player2.center_y - 3
-//    if self.ball.y > self.player2.center_y:
-//    self.player2.center_y = self.player2.center_y + 3
+    AIStrategy strategy;
+    Ball ball;
+    Stick stick;
+    
+    public AIManager( AIStrategy strategy, Ball ball, Stick stick){
+        this.strategy = strategy;
+        this.ball = ball;
+        this.stick = stick;
+    }
+    
+    public void execute(){
+        strategy.aiStick(this.ball, this.stick);
+    }
+
+    void setLevel(int AILevel) {
+        strategy.setAILevel(AILevel);
+    }
 }

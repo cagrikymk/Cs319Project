@@ -6,6 +6,8 @@
 package model;
 
 import controller.GameFieldManager;
+import static controller.GameFieldManager.MAP_HEIGHT;
+import static controller.GameFieldManager.MAP_WIDTH;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
@@ -66,6 +68,16 @@ public class Stick extends GameObject{
         }
         
     }
+      
+      public void setInitial(int p) {
+          if(p == 1)
+            setLocation(200, MAP_HEIGHT / 2 + 40);
+          else
+             setLocation(MAP_WIDTH + 140, MAP_HEIGHT / 2 + 40); 
+          setHeight(100);
+          setWidth(20);
+          
+      }
 
 
 }

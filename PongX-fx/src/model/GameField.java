@@ -6,6 +6,7 @@
 package model;
 
 import controller.GameFieldManager;
+import controller.GameManager;
 import java.awt.Point;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
@@ -37,7 +38,9 @@ public class GameField {
     }
     
     public void initializeGameField() {
-        ball.intialThrowBall(590, 340);
+        ball.intialThrowBall(GameManager.WIDTH/2, GameManager.HEIGHT/2);
+        players[0].setInitial(1);
+         players[1].setInitial(2);
     }
 
     public ArrayList<Power> getPowers() {

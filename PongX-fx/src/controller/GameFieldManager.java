@@ -37,11 +37,13 @@ public class GameFieldManager {
     private int player1Score = 0;
     private int player2Score = 0;
     private InputManager inputManager;
+    private AIManager aiManager;
+    private int AILevel;
 
     public GameFieldManager(double friction, ArrayList<Brick> brickSet, ArrayList<Power> powers, boolean isSingleplayer, String imageURL) {
         Stick sticks[] = new Stick[2];
         sticks[0] = new Stick(200, MAP_HEIGHT / 2 + 40, new Rectangle(20, 100));
-        sticks[1] = new Stick(MAP_WIDTH + 100, MAP_HEIGHT / 2 + 40, new Rectangle(20, 100));
+        sticks[1] = new Stick(MAP_WIDTH + 140, MAP_HEIGHT / 2 + 40, new Rectangle(20, 100));
 
         gameField = new GameField(new Ball(10, 0, 0), brickSet, powers, sticks, friction, imageURL);
         this.imageURL = imageURL;
@@ -52,15 +54,56 @@ public class GameFieldManager {
         if(isSingleplayer == false) {
             inputManager.setP2(gameField.getPlayers()[1]); // multi so input manager handles both user's inputs
         }
+        
+        else {
+            this.aiManager = new AIManager(new AINormal(), this.gameField.getBall(), sticks[1]);
+        }
     }
 
     public void initGameFieldManager() {
+        player1Score = 0;
+        player2Score = 0;
         gameField.initializeGameField();
     }
 
     public boolean generatePower() {
+        int i = (int)(Math.random() * 4);
+        Power p;
+        int x = MAP_WIDTH_OFFSET + MAP_WIDTH/2;
+        int y = MAP_HEIGHT_OFFSET + MAP_HEIGHT/2;
+        x = x + (int)(Math.random() * 400) - 200;
+        y = y + (int)(Math.random() * 100) - 50;
+        
+        if(i == 0) {
+            
+            p = new PositivePower(x, y);
+        }
+        else if(i == 1) {
 
-        return false;
+            p = new NegativePower(x, y);
+        }
+        else  if(i == 2) {
+
+            p = new StickNegativePower(x, y);
+        }
+           else {
+
+            p = new StickPositivePower(x, y);
+        }
+        boolean impact = false;
+        for (Brick b1 : gameField.getBricks()) {
+            if(b1.getShape().intersects(p.getShape().getBoundsInParent())) {
+                impact = true;
+                break;
+            }
+        }
+        if(impact) {
+            return generatePower();
+        }
+        else {
+            gameField.getPowers().add(p);
+            return true;           
+        }
     }
 
     public void updateGameField() {
@@ -69,6 +112,9 @@ public class GameFieldManager {
         detectStickBallCollision();
         detectPowerBallCollision();
         cleanDestroyedObjects();
+        
+        if ( isSingleplayer )
+            aiManager.execute();
         
         gameField.update();
     }
@@ -104,6 +150,7 @@ public class GameFieldManager {
             }
             if(impact == true){
                 b1.decreaseLife(); // if brick is hitted decrease life
+                System.out.println("hit");
                 if (b1.getLife() == 0)
                     SoundManager.playExplosionSound();
                 else
@@ -222,14 +269,15 @@ public class GameFieldManager {
         if (ball.getAxisX() + ball.getRadius() >= gameField.getBorderRight()) {
             player1Score += 1;
             
-            ball.reflectBall(Ball.ImpactLocation.RIGHT);
-            //ball.intialThrowBall(625, 340);
+            //ball.reflectBall(Ball.ImpactLocation.RIGHT);
+            GameManager.getInstance().wait(2000);
+            ball.intialThrowBall(625, 340);
         }
         if (ball.getAxisX() - ball.getRadius() <= gameField.getBorderLeft()) {
             player2Score += 1;
-            ball.reflectBall(Ball.ImpactLocation.LEFT);
-
-            //ball.intialThrowBall(590,340);
+            //ball.reflectBall(Ball.ImpactLocation.LEFT);
+            GameManager.getInstance().wait(2000);
+            ball.intialThrowBall(590,340);
         }
     }
 
@@ -281,6 +329,22 @@ public class GameFieldManager {
     public void setPlayer2Score(int player2Score) {
         this.player2Score = player2Score;
     }
+    
+    public double getFriction() {
+        return gameField.getFriction();
+    }
+
+    public int getAILevel() {
+        return AILevel;
+    }
+
+    public void setAILevel(int AILevel) {
+        this.AILevel = AILevel;
+        aiManager.setLevel(AILevel);
+        System.out.println("ai level " + AILevel);
+    }
+    
+    
     
     
 

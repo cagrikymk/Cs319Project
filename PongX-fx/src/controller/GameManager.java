@@ -40,11 +40,14 @@ public class GameManager implements Runnable {
     private static GameManager gameManagerInstance; // SİNGLETON PATTERN
     public static final int WIDTH = 1366;
     public static final int HEIGHT = 768;
+    private int aiLevel;
+    private int waitMS;
     
+    private String brickSet;
 
     private AnimationTimer timer;
-
-    int i = 0;
+    
+    private String winner;
 
     private GameManager() {
 
@@ -61,12 +64,14 @@ public class GameManager implements Runnable {
         if (gameManagerInstance != null) {
 
             try {
-                gameFieldManager = new GameFieldManager(friction, getBrickFromFile(brickSet), getPowerFromFile(), false, imageURL);
+                gameFieldManager = new GameFieldManager(friction, getBrickFromFile(brickSet), getPowerFromFile(), isSingleplayer, imageURL);
             } catch (IOException ex) {
                 System.err.println("bricks couldnt load");
             }
             this.options = options;
             gameState = GameState.RUNNING;
+            this.brickSet = brickSet;
+            winner = "";
         } else {
             System.err.println("No instance of game manager");
         }
@@ -74,10 +79,17 @@ public class GameManager implements Runnable {
     }
 
     public void update() {
-        if(gameState == GameState.RUNNING)
+        if (gameState == GameState.RUNNING) {
             getGameFieldManager().updateGameField();
-         renderer.update();
-         
+        } 
+        renderer.update();
+
+    }
+    
+    public void restartGame() {
+        stop();
+        init(Options.getInstance(), gameFieldManager.getFriction(), this.brickSet, gameFieldManager.isIsSingleplayer(), gameFieldManager.getImageURL());
+        startGame();
     }
 
     // prepare thread
@@ -85,11 +97,37 @@ public class GameManager implements Runnable {
         gameFieldManager.initGameFieldManager();
 
         timer = new AnimationTimer() {
+            long start = System.currentTimeMillis();
 
             // this method will called 60 times per sec
+
             @Override
             public void handle(long now) {
+                
+                if(waitMS > 0) {
+                    long start = System.currentTimeMillis();
+                    while(System.currentTimeMillis() - start < waitMS);
+                    waitMS = 0;
+                }
+                
                 update();
+                
+                if(gameFieldManager.getPlayer1Score() == 5) {
+                    winner = "Player 1";
+                    gameState = GameState.GAMEOVER;
+                }
+                else if (gameFieldManager.getPlayer2Score() == 5) {
+                    winner = "Player 2";
+                    gameState = GameState.GAMEOVER;
+                }
+
+                if (isRunning()) {
+                    if (System.currentTimeMillis() - start > 5000) {
+                        gameFieldManager.generatePower();
+                        start = System.currentTimeMillis();
+                    }
+                }
+
             }
 
         };
@@ -112,13 +150,17 @@ public class GameManager implements Runnable {
         }
     }
 
+    public boolean isRunning() {
+        return (gameState == GameState.RUNNING);
+    }
+
     public void startGame() {
         initializeGame();
         run();
     }
 
     public void endGame() {
-
+        stop();
     }
 
     public GameState getGameState() {
@@ -144,6 +186,22 @@ public class GameManager implements Runnable {
     public void setGameFieldManager(GameFieldManager gameFieldManager) {
         this.gameFieldManager = gameFieldManager;
     }
+    
+    public String getWinner() {
+        return winner;
+    }
+
+    public int getAiLevel() {
+        return aiLevel;
+    }
+
+    public void setAiLevel(int aiLevel) {
+        this.aiLevel = aiLevel;
+        gameFieldManager.setAILevel(this.aiLevel);
+    }
+    
+    
+
 
     private ArrayList<Brick> getBrickFromFile(String brickSet) throws FileNotFoundException, IOException {
 
@@ -194,11 +252,9 @@ public class GameManager implements Runnable {
     public void setRenderer(GameRendererPane renderer) {
         this.renderer = renderer;
     }
-    
-    
 
     private ArrayList<Power> getPowerFromFile() throws FileNotFoundException, IOException {
-          
+
         ArrayList<Power> powers = new ArrayList<Power>();
 
 //        BufferedReader bufferedReader = null;
@@ -233,43 +289,31 @@ public class GameManager implements Runnable {
 //            if (bufferedReader != null) {
 //                bufferedReader.close();
 //            }
-//        }
-        StickPositivePower spp = new StickPositivePower(550, 400);
-        powers.add(spp);
-        spp = new StickPositivePower(550, 550);
-        powers.add(spp);
-        StickNegativePower snp = new StickNegativePower(550, 250);
-        powers.add(snp);
-        NegativePower pp = new NegativePower(200,200);
-        powers.add(pp);
-        pp = new NegativePower(300,300);
-        powers.add(pp);
-        pp = new NegativePower(400,400);
-        powers.add(pp);
-            
+//        } 
         return powers;
     }
 
+    @Override
+    public void run() {
 
-
-@Override
-        public void run() {
-         
         timer.start();
-        
+
     }
-    
+
     public void stop() {
-         
+
         timer.stop();
-        
+
+    }
+    
+    public void wait(int ms) {
+       waitMS = ms;
     }
 
+ 
+    public enum GameState {
 
-    
-     public enum GameState {
-
-    RUNNING, GAMEOVER, PAUSE, BEFORESTART
+        RUNNING, GAMEOVER, PAUSE, BEFORESTART
 
     }
 
